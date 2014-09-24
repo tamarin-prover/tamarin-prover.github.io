@@ -1,0 +1,16 @@
+Hello for all;
+
+I still new for Tamarin prover and I counter this problem:
+"Parsing xor-based protocol is an extensive operation for resources and consumes a huge time, 
+or sometimes unterminated operation"
+
+I've implemented this as follow:
+
+functions:  xor/2, zero/0
+equations:  xor(xor(a,b),a)=b,
+            xor(xor(a,b),b)=a,
+            xor(a,a)=zero,
+            xor(zero,a)=a,
+            xor(a,zero)=a
+
+Is that correct??
