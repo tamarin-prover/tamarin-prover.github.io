@@ -10,7 +10,6 @@
 <!--    <script src="highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 -->
-          <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     </head>
 <body class="tamarindoc">
     <!--[if lte IE 8]>
@@ -50,86 +49,17 @@
     <div id='page'>
 <p class="halfbreak">
 </p>
-<div style="display:none">
-<p><span class="math display">\[%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Fix some incompatibilities between Mathjax and Latex
-\ifxetex
-  % spacing
-  \newcommand{\nhspace}{}
-  % ampersand escaping
-  \newcommand{\autognp}{\textsf{AutoG\&amp;P}}
-\else
-  \newcommand{\nhspace}{\!}
-  \newcommand{\autognp}{\textsf{AutoG&amp;P}}
-\fi
-
-% amper
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Tool names
-\newcommand{\easycrypt}{\textsf{EasyCrypt}}
-\newcommand{\cryptoverif}{\textsf{CryptoVerif}}
-\newcommand{\proverif}{\textsf{ProVerif}}
-\newcommand{\scyther}{\textsf{Scyther}}
-\newcommand{\tamarin}{\textsf{Tamarin}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Bilinear groups
-\newcommand{\GG}{\mathbb{G}}
-\newcommand{\FF}{\mathbb{F}}
-\newcommand{\Fq}{\mathbb{F}_q}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Adversaries, simulators
-\newcommand{\Adv}{\mathcal{A}}
-\newcommand{\Sim}{\mathcal{S}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Probability expressions
-
-\newcommand{\samp}[2]{#1 \leftarrow\!\!\!\!\!^{\$}\  #2}
-\newcommand{\call}[2]{#1 \leftarrow #2}
-\newcommand{\ProbGame}[2]{%
-Pr\left[
-\begin{array}{l|l}
-  \begin{array}{l}%
-  #1
-  \end{array}%
-&amp;%
-  #2  
-\end{array}%
-\right]}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% public key encryption
-
-\newcommand{\dotsep}[2]{#1 . \nhspace #2}
-\newcommand{\schemeProc}[2]{\mathsf{\dotsep{#1}{#2}}}
-
-\newcommand{\pkeyGen}{\schemeProc{PKE}{keyGen}}
-\newcommand{\penc}{\schemeProc{PKE}{enc}}
-\newcommand{\pdec}{\schemeProc{PKE}{dec}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Assumptions and security definitions
-
-\newcommand{\AdvDDH}{\Adv_{\mathsf{ddh}}}
-\newcommand{\IndCpa}{\textsf{IND-CPA}}\]</span></p>
-</div>
 <h1 id="sec:precomputation">Precomputation</h1>
 <p>In this section, we will explain some of the aspects of the precomputation performed by Tamarin. This is relevant for users that model complex protocols since they may at some point run into so-called <a href="#sec:openchains">open chains</a>, which can be problematic for verification.</p>
 <p>To illustrate the concepts, consider the example of the Needham-Schroeder-Lowe Public Key Protocol, given here in Alice&amp;Bob notation:</p>
-<pre class="tamarin" slice="code/NSLPK3.spthy" lower="24" upper="29"><code>  protocol NSLPK3 {
+<pre class="tamarin"><code>  protocol NSLPK3 {
     1. I -&gt; R: {&#39;1&#39;,ni,I}pk(R)
     2. I &lt;- R: {&#39;2&#39;,ni,nr,R}pk(I)
     3. I -&gt; R: {&#39;3&#39;,nr}pk(R)
 
-  }
-</code></pre>
+  }</code></pre>
 <p>It is specified in Tamarin by the following rules:</p>
-<pre class="tamarin" slice="code/NSLPK3.spthy" lower="32" upper="71"><code>rule Register_pk:
+<pre class="tamarin"><code>rule Register_pk:
   [ Fr(~ltkA) ]
   --&gt;
   [ !Ltk($A, ~ltkA), !Pk($A, pk(~ltkA)), Out(pk(~ltkA)) ]
@@ -168,10 +98,9 @@ rule R_2:
 rule Secrecy_claim:
   [ Secret(A, B, m) ] --[ Secret(A, B, m) ]-&gt; []
 
-
 </code></pre>
 <p>We now want to prove the following lemma:</p>
-<pre class="tamarin" slice="code/NSLPK3.spthy" lower="105" upper="118"><code>
+<pre class="tamarin"><code>
 lemma nonce_secrecy:
   &quot; /* It cannot be that */
     not(
@@ -184,7 +113,6 @@ lemma nonce_secrecy:
         &amp; not (Ex #r. RevLtk(A) @ r)
         &amp; not (Ex #r. RevLtk(B) @ r)
        )&quot;
-
 </code></pre>
 <p>This proof attempt will not terminate due to there being <code>12 chains left</code> when looking at this example in the GUI as described in detail below.</p>
 <h2 id="sec:openchains">Open Chains</h2>
@@ -214,7 +142,7 @@ As Tamarin is unable to conclude that the secret key could not have come from th
 </ol>
 <p>For full technical details, we refer the reader to <span class="citation">(Meier 2012)</span>.</p>
 <p>In our example, we can add the following lemma:</p>
-<pre class="tamarin" slice="code/NSLPK3.spthy" lower="86" upper="102"><code>lemma types [typing]:
+<pre class="tamarin"><code>lemma types [typing]:
   &quot; (All ni m1 #i.
        IN_R_1_ni( ni, m1) @ i
        ==&gt;
@@ -230,15 +158,14 @@ As Tamarin is unable to conclude that the secret key could not have come from th
        )
     )
   &quot;
-
 </code></pre>
 <p>This typing lemma is applied to the untyped case distinctions to compute the typed case distinctions. All non-typing lemmas are proven with the resulting typed case distinctions, while typing lemmas must be proved with the untyped case distinctions.</p>
-<p>This lemma relates the point of instantiation to the point of sending by either the adversary or the communicating partner. In other words, it says that whenever the responder receives the first nonce, either the nonce was known to the adversary or the initiator sent the first message prior to that moment. Similarly, the second part states that whenever the initiator receives the second message, either the adversary knew the corresponding nonce or the responder has sent the second message before. Generally, in a protocol with open chains it is advisable to try if the problem can be solved by a typing lemma that considers where a term could be coming from. As in the above example, one idea to do so is by stating that a used term must either have occured in a one of a list of rules before or it must have come from the adversary.</p>
+<p>This lemma relates the point of instantiation to the point of sending by either the adversary or the communicating partner. In other words, it says that whenever the responder receives the first nonce, either the nonce was known to the adversary or the initiator sent the first message prior to that moment. Similarly, the second part states that whenever the initiator receives the second message, either the adversary knew the corresponding nonce or the responder has sent the second message before. Generally, in a protocol with open chains it is advisable to try if the problem can be solved by a typing lemma that considers where a term could be coming from. As in the above example, one idea to do so is by stating that a used term must either have occured in one of a list of rules before, or it must have come from the adversary.</p>
 <p>The above typing lemma can be automatically proven by Tamarin. With the typing lemma, Tamarin can then automatically prove the lemma <code>nonce_secrecy</code>.</p>
 <p>Another possibility is that the open chains only occur in an undesired application of a rule that we do not wish to consider in our model. In such a case, we can explicitly exclude this application of the rule with an axiom. But, we should ensure that the resulting model is the one we want; so use this with care.</p>
 <div id="refs" class="references">
 <div id="ref-meierthesis">
-<p>Meier, Simon. 2012. “Advancing Automated Security Protocol Verification.” PhD dissertation, ETH Zurich.</p>
+<p>Meier, Simon. 2012. “Advancing Automated Security Protocol Verification.” PhD dissertation, ETH Zurich. <a href="http://dx.doi.org/10.3929/ethz-a-009790675" class="uri">http://dx.doi.org/10.3929/ethz-a-009790675</a>.</p>
 </div>
 </div>
     </div>

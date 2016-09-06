@@ -10,7 +10,6 @@
 <!--    <script src="highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 -->
-          <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     </head>
 <body class="tamarindoc">
     <!--[if lte IE 8]>
@@ -50,74 +49,6 @@
     <div id='page'>
 <p class="halfbreak">
 </p>
-<div style="display:none">
-<p><span class="math display">\[%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Fix some incompatibilities between Mathjax and Latex
-\ifxetex
-  % spacing
-  \newcommand{\nhspace}{}
-  % ampersand escaping
-  \newcommand{\autognp}{\textsf{AutoG\&amp;P}}
-\else
-  \newcommand{\nhspace}{\!}
-  \newcommand{\autognp}{\textsf{AutoG&amp;P}}
-\fi
-
-% amper
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Tool names
-\newcommand{\easycrypt}{\textsf{EasyCrypt}}
-\newcommand{\cryptoverif}{\textsf{CryptoVerif}}
-\newcommand{\proverif}{\textsf{ProVerif}}
-\newcommand{\scyther}{\textsf{Scyther}}
-\newcommand{\tamarin}{\textsf{Tamarin}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Bilinear groups
-\newcommand{\GG}{\mathbb{G}}
-\newcommand{\FF}{\mathbb{F}}
-\newcommand{\Fq}{\mathbb{F}_q}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Adversaries, simulators
-\newcommand{\Adv}{\mathcal{A}}
-\newcommand{\Sim}{\mathcal{S}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Probability expressions
-
-\newcommand{\samp}[2]{#1 \leftarrow\!\!\!\!\!^{\$}\  #2}
-\newcommand{\call}[2]{#1 \leftarrow #2}
-\newcommand{\ProbGame}[2]{%
-Pr\left[
-\begin{array}{l|l}
-  \begin{array}{l}%
-  #1
-  \end{array}%
-&amp;%
-  #2  
-\end{array}%
-\right]}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% public key encryption
-
-\newcommand{\dotsep}[2]{#1 . \nhspace #2}
-\newcommand{\schemeProc}[2]{\mathsf{\dotsep{#1}{#2}}}
-
-\newcommand{\pkeyGen}{\schemeProc{PKE}{keyGen}}
-\newcommand{\penc}{\schemeProc{PKE}{enc}}
-\newcommand{\pdec}{\schemeProc{PKE}{dec}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Assumptions and security definitions
-
-\newcommand{\AdvDDH}{\Adv_{\mathsf{ddh}}}
-\newcommand{\IndCpa}{\textsf{IND-CPA}}\]</span></p>
-</div>
 <h1 id="syntax-description">Syntax Description</h1>
 <p>Here, we explain the formal syntax of the security protocol theory format that is processed by Tamarin.</p>
 <p>Comments are C-style:</p>

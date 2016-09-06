@@ -10,7 +10,6 @@
 <!--    <script src="highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 -->
-          <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     </head>
 <body class="tamarindoc">
     <!--[if lte IE 8]>
@@ -50,88 +49,20 @@
     <div id='page'>
 <p class="halfbreak">
 </p>
-<div style="display:none">
-<p><span class="math display">\[%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Fix some incompatibilities between Mathjax and Latex
-\ifxetex
-  % spacing
-  \newcommand{\nhspace}{}
-  % ampersand escaping
-  \newcommand{\autognp}{\textsf{AutoG\&amp;P}}
-\else
-  \newcommand{\nhspace}{\!}
-  \newcommand{\autognp}{\textsf{AutoG&amp;P}}
-\fi
-
-% amper
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Tool names
-\newcommand{\easycrypt}{\textsf{EasyCrypt}}
-\newcommand{\cryptoverif}{\textsf{CryptoVerif}}
-\newcommand{\proverif}{\textsf{ProVerif}}
-\newcommand{\scyther}{\textsf{Scyther}}
-\newcommand{\tamarin}{\textsf{Tamarin}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Bilinear groups
-\newcommand{\GG}{\mathbb{G}}
-\newcommand{\FF}{\mathbb{F}}
-\newcommand{\Fq}{\mathbb{F}_q}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Adversaries, simulators
-\newcommand{\Adv}{\mathcal{A}}
-\newcommand{\Sim}{\mathcal{S}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Probability expressions
-
-\newcommand{\samp}[2]{#1 \leftarrow\!\!\!\!\!^{\$}\  #2}
-\newcommand{\call}[2]{#1 \leftarrow #2}
-\newcommand{\ProbGame}[2]{%
-Pr\left[
-\begin{array}{l|l}
-  \begin{array}{l}%
-  #1
-  \end{array}%
-&amp;%
-  #2  
-\end{array}%
-\right]}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% public key encryption
-
-\newcommand{\dotsep}[2]{#1 . \nhspace #2}
-\newcommand{\schemeProc}[2]{\mathsf{\dotsep{#1}{#2}}}
-
-\newcommand{\pkeyGen}{\schemeProc{PKE}{keyGen}}
-\newcommand{\penc}{\schemeProc{PKE}{enc}}
-\newcommand{\pdec}{\schemeProc{PKE}{dec}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Assumptions and security definitions
-
-\newcommand{\AdvDDH}{\Adv_{\mathsf{ddh}}}
-\newcommand{\IndCpa}{\textsf{IND-CPA}}\]</span></p>
-</div>
 <h1 id="preliminaries">Preliminaries</h1>
 <p>Please ensure that all of us follow these instructions, so we end up with a document that is consistent and as easy to read as possible.</p>
 <p>We aim to write this document using American English.</p>
 <h2 id="protocol-notation">Protocol notation</h2>
 <p>We will use spthy description for all protocols. In the introduction, we can additionally(!), give mathematical notation for the first few examples. Also ensure all protocols are available as executable spthy files, and are stored in the sub-directory <code>code</code> of the repository for easy distribution. The best way to ensure everything fits together is to include the spthy files as follows.</p>
-<pre class="autognp" include="code/example.spthy"><code>theory ex1 begin
+<pre class="autognp"><code>theory ex1 begin
 
 /*
- * Protocol:	 Diffie-Hellman with MAC
- * Modeler: 	 Benedikt Schmidt
+ * Protocol:     Diffie-Hellman with MAC
+ * Modeler:      Benedikt Schmidt
  * Described in: CAV 2013 Submission
- * Date: 	 January 2013
+ * Date:     January 2013
  *
- * Status: 	 Working
+ * Status:   Working
  */
 
 
@@ -158,12 +89,10 @@ lemma Accept_Secret:
 lemma Accept_Secret_Counter:
   &quot;∀ #i #j tid key. Accept(tid, key) @ i &amp; K(key) @ j ==&gt; F&quot;
 
-end
-</code></pre>
+end</code></pre>
 <p>You can also include a slice of a file.</p>
-<pre class="autognp" slice="code/example.spthy" lower="12" upper="13"><code>builtins: diffie-hellman
-functions: mac/2, g/0, shk/0 [private]
-</code></pre>
+<pre class="autognp"><code>builtins: diffie-hellman
+functions: mac/2, g/0, shk/0 [private]</code></pre>
 <h2 id="indexing">Indexing</h2>
 <p>Use LaTeX's indexing capability with the keyword index{Index}. For example, we talk about makeindex here.</p>
 <h2 id="intended-audience">Intended Audience</h2>

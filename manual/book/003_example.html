@@ -10,7 +10,6 @@
 <!--    <script src="highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 -->
-          <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     </head>
 <body class="tamarindoc">
     <!--[if lte IE 8]>
@@ -50,74 +49,6 @@
     <div id='page'>
 <p class="halfbreak">
 </p>
-<div style="display:none">
-<p><span class="math display">\[%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Fix some incompatibilities between Mathjax and Latex
-\ifxetex
-  % spacing
-  \newcommand{\nhspace}{}
-  % ampersand escaping
-  \newcommand{\autognp}{\textsf{AutoG\&amp;P}}
-\else
-  \newcommand{\nhspace}{\!}
-  \newcommand{\autognp}{\textsf{AutoG&amp;P}}
-\fi
-
-% amper
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Tool names
-\newcommand{\easycrypt}{\textsf{EasyCrypt}}
-\newcommand{\cryptoverif}{\textsf{CryptoVerif}}
-\newcommand{\proverif}{\textsf{ProVerif}}
-\newcommand{\scyther}{\textsf{Scyther}}
-\newcommand{\tamarin}{\textsf{Tamarin}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Bilinear groups
-\newcommand{\GG}{\mathbb{G}}
-\newcommand{\FF}{\mathbb{F}}
-\newcommand{\Fq}{\mathbb{F}_q}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Adversaries, simulators
-\newcommand{\Adv}{\mathcal{A}}
-\newcommand{\Sim}{\mathcal{S}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Probability expressions
-
-\newcommand{\samp}[2]{#1 \leftarrow\!\!\!\!\!^{\$}\  #2}
-\newcommand{\call}[2]{#1 \leftarrow #2}
-\newcommand{\ProbGame}[2]{%
-Pr\left[
-\begin{array}{l|l}
-  \begin{array}{l}%
-  #1
-  \end{array}%
-&amp;%
-  #2  
-\end{array}%
-\right]}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% public key encryption
-
-\newcommand{\dotsep}[2]{#1 . \nhspace #2}
-\newcommand{\schemeProc}[2]{\mathsf{\dotsep{#1}{#2}}}
-
-\newcommand{\pkeyGen}{\schemeProc{PKE}{keyGen}}
-\newcommand{\penc}{\schemeProc{PKE}{enc}}
-\newcommand{\pdec}{\schemeProc{PKE}{dec}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Assumptions and security definitions
-
-\newcommand{\AdvDDH}{\Adv_{\mathsf{ddh}}}
-\newcommand{\IndCpa}{\textsf{IND-CPA}}\]</span></p>
-</div>
 <h1 id="initial-example">Initial Example</h1>
 <p>We will start with a simple example of a protocol that consists of just two messages, written here in so-called Alice-and-Bob notation:</p>
 <pre><code>C -&gt; S: aenc(k, pkS)
@@ -125,16 +56,14 @@ C &lt;- S: h(k)</code></pre>
 <p>In this protocol, a client <code>C</code> generates a fresh symmetric key <code>k</code>, encrypts it with the public key <code>pkS</code> of a server <code>S</code> (<code>aenc</code> stands for <em>asymmetric encryption</em>), and sends it to <code>S</code>. The server confirms the key's receipt by sending the hash of the key back to the client.</p>
 <p>This simple protocol is artificial and satisfies only very weak security guarantees. We will use it to illustrate the general Tamarin workflow by proving that, from the client's perspective, the freshly generated key is secret provided that the server is not compromised. By default, the adversary is a Dolev-Yao adversary that controls the network and can delete, inject, modify and intercept messages on the network.</p>
 <p>The protocol's Tamarin model and its security properties are given in the file <a href="../code/FirstExample.spthy">FirstExample.spthy</a> (<code>.spthy</code> stands for <em>security protocol theory</em>). The Tamarin file starts with <code>theory</code> followed by the theory's name, here <code>FirstExample</code>.</p>
-<pre class="tamarin" slice="code/FirstExample.spthy" lower="12" upper="13"><code>theory FirstExample
-begin
-</code></pre>
+<pre class="tamarin"><code>theory FirstExample
+begin</code></pre>
 <p>After the keyword <code>begin</code>, we first declare the cryptographic primitives the protocol uses. Afterward, we declare multiset rewriting rules that model the protocol, and finally we write the properties to be proven (called <em>lemmas</em> within the Tamarin framework), which specify the protocol's desired security properties. Note that we have also inserted comments to structure the theory.</p>
 <p>We next explain in detail the protocol model.</p>
 <h2 id="cryptographic-primitives">Cryptographic primitives</h2>
 <p>We are working in a symbolic model of security protocols. This means that we model messages as terms, built from functions, that satisfy an underlying equational theory describing their properties. This will be explained in detail in the part on <a href="004_cryptographic-messages.html#sec:cryptographic-messages">Cryptographic Messages</a>.</p>
 <p>In this example, we use Tamarin's built-in functions for hashing and asymmetric-encryption, declared in the following line:</p>
-<pre class="tamarin" slice="code/FirstExample.spthy" lower="15" upper="15"><code>builtins: hashing, asymmetric-encryption
-</code></pre>
+<pre class="tamarin"><code>builtins: hashing, asymmetric-encryption</code></pre>
 <p>These built-ins give us</p>
 <ul>
 <li>a unary function <code>h</code>, denoting a cryptographic hash function</li>
@@ -146,11 +75,10 @@ begin
 <h2 id="modeling-a-public-key-infrastructure">Modeling a Public Key Infrastructure</h2>
 <p>In Tamarin, the protocol and its environment are modeled using <em>multiset rewriting rules</em>. The rules operate on the system's state, which is expressed as a multiset (i.e., a bag) of facts. Facts can be seen as predicates storing state information. For example, the fact <code>Out(h(k))</code> models that the protocol sent out the message <code>h(k)</code> on the public channel, and the fact <code>In(x)</code> models that the protocol receives the message <code>x</code> on the public channel.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
 <p>The example starts with the model of a public key infrastructure (PKI). Again, we use facts to store information about the state given by their arguments. The rules have a premise and a conclusion, separated by the arrow symbol <code>--&gt;</code>. Executing the rule requires that all facts in the premise are present in the current state and, as a result of the execution, the facts in the conclusion will be added to the state, while the premises are removed. Now consider the first rule, modeling the registration of a public key:</p>
-<pre class="tamarin" slice="code/FirstExample.spthy" lower="18" upper="21"><code>rule Register_pk:
+<pre class="tamarin"><code>rule Register_pk:
     [ Fr(~ltk) ]
   --&gt;
-    [ !Ltk($A, ~ltk), !Pk($A, pk(~ltk)) ]
-</code></pre>
+    [ !Ltk($A, ~ltk), !Pk($A, pk(~ltk)) ]</code></pre>
 <p>Here the only premise is an instance of the <code>Fr</code> fact. The <code>Fr</code> fact is a built-in fact that denotes a freshly generated name. This mechanism is used to model random numbers such as nonces or keys (see <a href="005_protocol-specification.html#sec:model-specification">Model Specification</a> for details).</p>
 <p>In Tamarin, the sort of a variable is expressed using prefixes:</p>
 <ul>
@@ -162,23 +90,21 @@ begin
 <p>Moreover, a string constant <code>'c'</code> denotes a public name in <code>pub</code>, which is a fixed, global constant. We have a top sort <code>msg</code> and two incomparable subsorts <code>fresh</code> and <code>pub</code> of that top sort. Timepoint variables of sort <code>temporal</code> are unconnected.</p>
 <p>The above rule can therefore be read as follows. First, generate a fresh name <code>~ltk</code> (of sort fresh), which is the new private key, and non-deterministically choose a public name <code>A</code>, for the agent for whom we are generating the key-pair. Afterward, generate the fact <code>!Ltk($A, ~ltk)</code> (the exclamation mark <code>!</code> denotes that the fact is persistent, i.e., it can be consumed arbitrarily often), which denotes the association between agent <code>A</code> and its private key <code>~ltk</code>, and generate the fact <code>!Pk($A, pk(~ltk))</code>, which associates agent <code>A</code> and its public key <code>pk(~ltk)</code>.</p>
 <p>In the example, we allow the adversary to retrieve any public key using the following rule. Essentially, it reads a public-key database entry and sends the public key to the network using the built-in fact <code>Out</code>, which denotes sending a message to the network (see the section on <a href="005_protocol-specification.html#sec:model-specification">Model Specification</a> for more information).</p>
-<pre class="tamarin" slice="code/FirstExample.spthy" lower="23" upper="26"><code>rule Get_pk:
+<pre class="tamarin"><code>rule Get_pk:
     [ !Pk(A, pk) ]
   --&gt;
-    [ Out(pk) ]
-</code></pre>
+    [ Out(pk) ]</code></pre>
 <p>We model the dynamic compromise of long-term private keys using the following rule. Intuitively, it reads a private-key database entry and sends it to the adversary. This rule has an observable <code>LtkReveal</code> action stating that the long-term key of agent <code>A</code> was compromised. Action facts are just like facts, but unlike the other facts do not appear in state, but only on the trace. The security properties are specified on the traces, and the action <code>LtkReveal</code> is used below to determine which agents are compromised. The rule now has a premise, conclusion, and action facts within the arrow: <code>--[  ACTIONFACT ]-&gt;</code>:</p>
-<pre class="tamarin" slice="code/FirstExample.spthy" lower="28" upper="31"><code>rule Reveal_ltk:
+<pre class="tamarin"><code>rule Reveal_ltk:
     [ !Ltk(A, ltk) ]
   --[ LtkReveal(A) ]-&gt;
-    [ Out(ltk) ]
-</code></pre>
+    [ Out(ltk) ]</code></pre>
 <h2 id="modeling-the-protocol">Modeling the protocol</h2>
 <p>Recall the Alice-and-Bob notation of the protocol we want to model:</p>
 <pre><code>C -&gt; S: aenc(k, pkS)
 C &lt;- S: h(k)</code></pre>
 <p>We model it using the following three rules.</p>
-<pre class="tamarin" slice="code/FirstExample.spthy" lower="33" upper="59"><code>// Start a new thread executing the client role, choosing the server
+<pre class="tamarin"><code>// Start a new thread executing the client role, choosing the server
 // non-deterministically.
 rule Client_1:
     [ Fr(~k)         // choose fresh key
@@ -204,14 +130,13 @@ rule Serv_1:
     ]
   --[ AnswerRequest($S, adec(request, ~ltkS)) ]-&gt; // Explanation below
     [ Out( h(adec(request, ~ltkS)) ) ]            // Return the hash of the
-                                                  // decrypted request.
-</code></pre>
+                                                  // decrypted request.</code></pre>
 <p>Here, the first rule models the client sending its message, while the second rule models it receiving a response. The third rule models the server, both receiving the message and responding in one single rule.</p>
 <p>Several explanations are in order. First, Tamarin uses C-style comments, so everything between <code>/*</code> and <code>*/</code> or the line following <code>//</code> is a comment. Second, we log the session-key setup requests received by servers using an action to allow the formalization of the authentication property for the client later.</p>
 <h2 id="modeling-security-properties">Modeling security properties</h2>
 <p>Security properties are defined over traces of the action facts of a protocol execution.</p>
 <p>We have two properties that we would like to evaluate. In the Tamarin framework, properties to be evaluated are denoted by lemmas. The first of these is on the secrecy of session key secrecy from the client point of view. The lemma <code>Client_session_key_secrecy</code> says that it cannot be that a client has set up a session key <code>k</code> with a server <code>S</code> and the adversary learned that <code>k</code> unless the adversary performed a long-term key reveal on the server <code>S</code>. The second lemma <code>Client_auth</code> specifies client authentication. This is the statement that, for all session keys <code>k</code> that the clients have setup with a server <code>S</code>, there must be a server that has answered the request or the adversary has previously performed a long-term key reveal on <code>S</code>.</p>
-<pre class="tamarin" slice="code/FirstExample.spthy" lower="62" upper="86"><code>lemma Client_session_key_secrecy:
+<pre class="tamarin"><code>lemma Client_session_key_secrecy:
   &quot; /* It cannot be that a  */
     not(
       Ex S k #i #j.
@@ -235,10 +160,9 @@ lemma Client_auth:
        | (Ex #r. LtkReveal(S) @ r &amp; r &lt; i)
        )
     )
-  &quot;
-</code></pre>
+  &quot;</code></pre>
 <p>Note that we can also strengthen the authentication property to a version of injective authentication. Our formulation is stronger than the standard formulation of injective authentication as it is based on uniqueness instead of counting. For most protocols that guarantee injective authentication, one can also prove such a uniqueness claim, as they agree on appropriate fresh data. This is shown in lemma <code>Client_auth_injective</code>.</p>
-<pre class="tamarin" slice="code/FirstExample.spthy" lower="88" upper="102"><code>lemma Client_auth_injective:
+<pre class="tamarin"><code>lemma Client_auth_injective:
   &quot; /* For all session keys &#39;k&#39; setup by clients with a server &#39;S&#39; */
     ( All S k #i.  SessKeyC(S, k) @ #i
        ==&gt;
@@ -252,16 +176,14 @@ lemma Client_auth:
        | (Ex #r. LtkReveal(S) @ r &amp; r &lt; i)
        )
     )
-  &quot;
-</code></pre>
+  &quot;</code></pre>
 <p>To ensure that our lemmas do not just hold vacuously because the model is not executable, we also include an executability lemma that shows that the model can run to completion. This is given as a regular lemma, but with the <code>exists-trace</code> keyword, as seen in the lemma <code>Client_session_key_honest_setup</code> below. This keyword says that the lemma is true if there <em>exists</em> a trace on which the formula holds; this is in contrast to the previous lemmas where we required the formula to hold on <em>all</em> traces. When modeling protocols, such existence proofs are useful sanity checks.</p>
-<pre class="tamarin" slice="code/FirstExample.spthy" lower="104" upper="109"><code>lemma Client_session_key_honest_setup:
+<pre class="tamarin"><code>lemma Client_session_key_honest_setup:
   exists-trace
   &quot; Ex S k #i.
         SessKeyC(S, k) @ #i
       &amp; not(Ex #r. LtkReveal(S) @ r)
-  &quot;
-</code></pre>
+  &quot;</code></pre>
 <h2 id="sec:gui">Graphical User Interface</h2>
 <p>How do you now prove that your lemmas are correct? If you execute the command line</p>
 <pre><code>tamarin-prover interactive FirstExample.spthy</code></pre>
@@ -348,13 +270,13 @@ analyzed: FirstExample.spthy
   Client_session_key_honest_setup (exists-trace): verified (5 steps)</code></pre>
 <h2 id="complete-example">Complete Example</h2>
 <p>Here is the complete input file:</p>
-<pre class="tamarin" include="code/FirstExample.spthy"><code>/*
+<pre class="tamarin"><code>/*
 Initial Example for the Tamarin Manual
 ======================================
 
-Authors: 	Simon Meier, Benedikt Schmidt
-Updated by: 	Jannik Dreier, Ralf Sasse
-Date: 	        June 2016
+Authors:    Simon Meier, Benedikt Schmidt
+Updated by:     Jannik Dreier, Ralf Sasse
+Date:           June 2016
 
 This file is documented in the Tamarin user manual.
 
@@ -459,8 +381,7 @@ lemma Client_session_key_honest_setup:
       &amp; not(Ex #r. LtkReveal(S) @ r)
   &quot;
 
-end
-</code></pre>
+end</code></pre>
 <div id="refs" class="references">
 
 </div>

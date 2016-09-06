@@ -50,74 +50,6 @@
     <div id='page'>
 <p class="halfbreak">
 </p>
-<div style="display:none">
-<p><span class="math display">\[%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Fix some incompatibilities between Mathjax and Latex
-\ifxetex
-  % spacing
-  \newcommand{\nhspace}{}
-  % ampersand escaping
-  \newcommand{\autognp}{\textsf{AutoG\&amp;P}}
-\else
-  \newcommand{\nhspace}{\!}
-  \newcommand{\autognp}{\textsf{AutoG&amp;P}}
-\fi
-
-% amper
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Tool names
-\newcommand{\easycrypt}{\textsf{EasyCrypt}}
-\newcommand{\cryptoverif}{\textsf{CryptoVerif}}
-\newcommand{\proverif}{\textsf{ProVerif}}
-\newcommand{\scyther}{\textsf{Scyther}}
-\newcommand{\tamarin}{\textsf{Tamarin}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Bilinear groups
-\newcommand{\GG}{\mathbb{G}}
-\newcommand{\FF}{\mathbb{F}}
-\newcommand{\Fq}{\mathbb{F}_q}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Adversaries, simulators
-\newcommand{\Adv}{\mathcal{A}}
-\newcommand{\Sim}{\mathcal{S}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Probability expressions
-
-\newcommand{\samp}[2]{#1 \leftarrow\!\!\!\!\!^{\$}\  #2}
-\newcommand{\call}[2]{#1 \leftarrow #2}
-\newcommand{\ProbGame}[2]{%
-Pr\left[
-\begin{array}{l|l}
-  \begin{array}{l}%
-  #1
-  \end{array}%
-&amp;%
-  #2  
-\end{array}%
-\right]}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% public key encryption
-
-\newcommand{\dotsep}[2]{#1 . \nhspace #2}
-\newcommand{\schemeProc}[2]{\mathsf{\dotsep{#1}{#2}}}
-
-\newcommand{\pkeyGen}{\schemeProc{PKE}{keyGen}}
-\newcommand{\penc}{\schemeProc{PKE}{enc}}
-\newcommand{\pdec}{\schemeProc{PKE}{dec}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Assumptions and security definitions
-
-\newcommand{\AdvDDH}{\Adv_{\mathsf{ddh}}}
-\newcommand{\IndCpa}{\textsf{IND-CPA}}\]</span></p>
-</div>
 <h1 id="sec:model-specification">Model Specification</h1>
 <p>In this section, we now provide an informal description of the underlying model. The full details of this model can be found in <span class="citation">(Schmidt 2012)</span>.</p>
 <p>Tamarin models are specified using three main ingredients:</p>
@@ -136,7 +68,7 @@ Pr\left[
 <h2 id="sec:rules">Rules</h2>
 <p>We use multiset rewriting to specify the concurrent execution of the protocol and the adversary. Multiset rewriting is a formalism that is commonly used to model concurrent systems since it naturally supports independent transitions.</p>
 <p>A multiset rewriting system defines a transition system, where, in our case, the transitions will be labeled. The system's state is a multiset (bag) of facts. We will explain the types of facts and their use below.</p>
-<p>A rewrite rule in Tamarin has a name and three parts, each of which is a sequence of facts: one for the rule's left-hand side, one labelleing the transition (which we call 'action facts'), and one for the rule's right-hand side. For example:</p>
+<p>A rewrite rule in Tamarin has a name and three parts, each of which is a sequence of facts: one for the rule's left-hand side, one labelling the transition (which we call 'action facts'), and one for the rule's right-hand side. For example:</p>
 <pre><code>rule MyRule1:
   [ ] --[ L(&#39;x&#39;) ]-&gt; [ F(&#39;1&#39;,&#39;x&#39;), F(&#39;2&#39;,&#39;y&#39;) ]
 
@@ -235,25 +167,25 @@ functions: h2/1</code></pre>
             ]</code></pre>
 <p>The computation of <code>kR</code> is not yet specified in the above. We could replace <code>kR</code> in the above rule by its full unfolding, but this would decrease readability. Instead, we use let binding to avoid duplication and reduce possible mismatches. Additionally, for the key computation we need the public key of the communication parter <code>$I</code>, which we bind to a unique thread identifier <code>~tid</code>; we use the resulting action fact to specify security properties, as we will see in the next section. This leads to:</p>
 <pre><code>    rule NaxosR_attempt3:
-        let 
-            exR = h1(&lt; ~eskR, ~lkR &gt;)
-            hkr = &#39;g&#39;^exR
-            kR  = h2(&lt; pkI^exR, X^~lkR, X^exR, $I, $R &gt;)
-        in
-         [
-             In(X),
-             Fr( ~eskR ),
-             Fr( ~tid ),
-             !Ltk($R, ~lkR),
-             !Pk($I, pkI)
-         ]
-         --[ SessionKey( ~tid, $R, $I, kR ) ]-&gt;
-         [
-             Out( hkr )
-         ]</code></pre>
+      let 
+          exR = h1(&lt; ~eskR, lkR &gt;)
+          hkr = &#39;g&#39;^exR
+          kR  = h2(&lt; pkI^exR, X^lkR, X^exR, $I, $R &gt;)
+      in
+       [
+           In(X),
+           Fr( ~eskR ),
+           Fr( ~tid ),
+           !Ltk($R, lkR),
+           !Pk($I, pkI)
+       ]
+       --[ SessionKey( ~tid, $R, $I, kR ) ]-&gt;
+       [
+           Out( hkr )
+       ]</code></pre>
 <p>The above rule models the responder role accurately, and computes the appropriate key.</p>
 <p>We note one further optimisation that helps Tamarin's backwards search. In <code>NaxosR_attempt3</code>, the rule specifies that <code>lkR</code> might be instantiated with any term, hence also non-fresh terms. However, since the key generation rule is the only rule that produces <code>Ltk</code> facts, and it will always use a fresh value for the key, it is clear that in any reachable state of the system, <code>lkR</code> can only become instantiated by fresh values. We can therefore mark <code>lkR</code> as being of sort fresh, therefore replacing it by <code>~lkR</code>.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
-<pre class="tamarin" slice="code/Naxos.spthy" lower="16" upper="32"><code>rule NaxosR:
+<pre class="tamarin"><code>rule NaxosR:
   let 
       exR = h1(&lt; ~eskR, ~lkR &gt;)
       hkr = &#39;g&#39;^exR
@@ -269,8 +201,7 @@ functions: h2/1</code></pre>
    --[ SessionKey( ~tid, $R, $I, kR ) ]-&gt;
    [
        Out( hkr )
-   ]
-</code></pre>
+   ]</code></pre>
 <p>The above rule suffices to model basic security properties, as we will see later.</p>
 <h3 id="modeling-the-naxos-initiator-role">Modeling the Naxos initiator role</h3>
 <p>The initiator role of the Naxos protocol consists of sending a message and waiting for the response. While the initiator is waiting for a response, other agents might also perform steps. We therefore model the initiator using two rules.<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
@@ -287,7 +218,7 @@ functions: h2/1</code></pre>
 <p>After triggering the previous rule, an initiator will wait for the response message. We still need to model the second part, in which the response is received and the key is computed. To model the second part of the initiator rule, we must be able to specify that it was preceded by the first part and with specific parameters. Intuitively, we must store in the state of the transition system that there is an initiator thread that has performed the first send with specific parameters, so it can continue where it left off.</p>
 <p>To model this, we introduce a new fact, which we often refer to as a <em>state fact</em>: a fact that indicates that a certain process or thread is at a specific point in its execution, effectively operating both as a program counter and as a container for the contents of the memory of the process or thread. Since there can be any number of initiators in parallel, we need to provide a unique handle for each of their state facts.</p>
 <p>Below we provide an updated version of the initiator's first rule that produces a state fact <code>Init_1</code> and introduces a unique thread identifier <code>~tid</code> for each instance of the rule.</p>
-<pre class="tamarin" slice="code/Naxos.spthy" lower="34" upper="43"><code>rule NaxosI_1:
+<pre class="tamarin"><code>rule NaxosI_1:
   let exI = h1(&lt;~eskI, ~lkI &gt;)
       hkI = &#39;g&#39;^exI
   in
@@ -296,10 +227,9 @@ functions: h2/1</code></pre>
        !Ltk( $I, ~lkI ) ]
    --&gt;
    [   Init_1( ~tid, $I, $R, ~lkI, ~eskI ),
-       Out( hkI ) ]
-</code></pre>
+       Out( hkI ) ]</code></pre>
 <p>Note that the state fact has several parameters: the unique thread identifier <code>~tid</code><a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>, the agent identities <code>$I</code> and <code>$R</code>, and the actor's long-term private key <code>~lkI</code>, and the private exponent. This now enables us to specify the second initiator rule.</p>
-<pre class="tamarin" slice="code/Naxos.spthy" lower="45" upper="54"><code>rule NaxosI_2:
+<pre class="tamarin"><code>rule NaxosI_2:
   let
       exI = h1(&lt; ~eskI, ~lkI &gt;)
       kI  = h2(&lt; Y^~lkI, pkR^exI, Y^exI, $I, $R &gt;)
@@ -308,11 +238,10 @@ functions: h2/1</code></pre>
        !Pk( $R, pkR ),
        In( Y ) ]
    --[ SessionKey( ~tid, $I, $R, kI ) ]-&gt;
-  []
-</code></pre>
+  []</code></pre>
 <p>This second rule requires receiving a message <code>Y</code> from the network but also that an initiator fact was previously generated. This rule then consumes this fact, and since there are no further steps in the protocol, does not need to output a similar fact. As the <code>Init_1</code> fact is instantiated with the same parameters, the second step will use the same agent identities and the exponent <code>exI</code> computed in the first step.</p>
 <p>Thus, the complete example becomes:</p>
-<pre class="tamarin" include="code/Naxos.spthy"><code>theory Naxos
+<pre class="tamarin"><code>theory Naxos
 begin
 
 builtins: diffie-hellman
@@ -368,8 +297,7 @@ rule NaxosI_2:
    --[ SessionKey( ~tid, $I, $R, kI ) ]-&gt;
   []
 
-end
-</code></pre>
+end</code></pre>
 <p>Note that the protocol description only specifies a model, but not which properties it might satisfy. We discuss these in the next section.</p>
 <!--
 **FIX Cas: need to do either pattern matching or explicit construct/deconstruct;
