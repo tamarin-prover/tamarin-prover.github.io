@@ -24,3 +24,8 @@ body {
   text-transform: none;
   line-height: 30px;
 }
+
+.centre-img {
+  display:block;
+  margin:auto;
+}
