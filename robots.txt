@@ -1,0 +1,4 @@
+# Do not make the develop version of the manual visible when searching
+
+User-agent: *
+Disallow: /manual/develop/
