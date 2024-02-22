@@ -60,8 +60,11 @@
     <section class="jumbotron text-center">
       <div class="container">
         <h1 class="jumbotron-heading">Tamarin Prover</h1>
-        <p class="lead text-muted">The Tamarin prover is a security protocol verification tool that supports both falsification and unbounded verification in the symbolic model. Security protocols are specified as multiset rewriting systems and analysed with respect to (temporal)
-          first-order properties and a message theory that models Diffie-Hellman exponentiation and exclusive-or (XOR), combined with a user-defined rewriting theory that has the Finite Variant Property, which includes subterm-convergent theories.</p>
+        <p class="lead text-muted">The Tamarin prover is a security protocol verification tool that supports both falsification (attack finding) and unbounded verification in the symbolic model. Security protocols are specified as multiset rewriting systems and analyzed with respect to temporal
+          first-order properties.
+          <!--and a message theory that models Diffie-Hellman exponentiation and exclusive-or (XOR), combined with a user-defined rewriting theory that has the Finite Variant Property, which includes subterm-convergent theories.-->
+        </p>
+          <p class="lead text-muted">Tamarin has been successfully used to analyze or support the development of modern security protocols, including TLS&nbsp;1.3 [<a href="https://tls13tamarin.github.io/TLS13Tamarin/docs/tls13tamarin-draft21.pdf" target="_blank">1</a>,<a href="https://cispa.saarland/group/cremers/downloads/papers/CHSV2016-TLS13.pdf" target="_blank">2</a>], 5G-AKA [<a href="https://arxiv.org/pdf/1806.10360" target="_blank">3</a>,<a href="https://cispa.saarland/group/cremers/downloads/papers/CrDe2018-5G.pdf" target="_blank">4</a>], Noise [<a href="https://cispa.saarland/group/cremers/downloads/papers/Noise-Usenix2020.pdf" target="_blank">5</a>], EMV (Chip-and-pin) [<a href="https://arxiv.org/pdf/2006.08249.pdf" target="_blank">6</a>], and Apple&nbsp;iMessage [<a href="https://security.apple.com/blog/imessage-pq3/" target="_blank">7</a>].</p>
         <p>
           <a href="manual/index.html" class="btn btn-primary" target="_blank"><i class="fa fa-book" aria-hidden="true"></i> Get the docs</a>
           <a href="manual/master/book/002_installation.html" class="btn btn-secondary" target="_blank"><i class="fa fa-download" aria-hidden="true"></i> Install Tamarin</a>
