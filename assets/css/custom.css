@@ -68,3 +68,7 @@ footer {
 footer p {
   margin-bottom: .25rem;
 }
+
+html {
+  scroll-padding-top: 60px;
+}
