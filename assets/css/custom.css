@@ -86,3 +86,24 @@ footer p {
 html {
   scroll-padding-top: 60px;
 }
+
+.book-download a {
+  background-color: #108825;
+  padding: 7px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #ffffff;
+  border-radius: 4px;
+  border: 0px;
+}
+
+.book-download a:hover {
+  background-color: #086624;
+  text-decoration: none;
+}
+
+
+.book-download li {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
