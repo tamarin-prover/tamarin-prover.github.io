@@ -1,0 +1,25 @@
+---
+layout: core
+---
+
+<div class="content">
+
+    <h1>{{ page.title }}</h1>
+
+    <div class="news-published-date-authors">
+        <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+            Published {{ page.date | date: date_format }}
+            {%- if page.updated_date -%}
+            &nbsp// Updated {{ page.updated_date | date: date_format }}
+            {%- endif -%}
+        </time> &nbsp//
+        {%- assign author = site.data.people[page.author] -%}
+        <a rel="author" href="{{ author.website }}" title="{{ author.name }}">
+{{ author.name }}</a>
+    </div>
+
+    {{ content }}
+
+
+</div>

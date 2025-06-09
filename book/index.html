@@ -1,122 +1,30 @@
-<!doctype html>
-<html lang="en">
+---
+title: "Book: Modeling and Analyzing Security Protocols with Tamarin"
+layout: default-specialtitle
+---
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Modeling and Analyzing Security Protocols with Tamarin: A Comprehensive Guide</title>
-  <meta name="description"
-    content="The Tamarin prover is a security protocol verification tool that supports both falsification and unbounded verification in the symbolic model.">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<h1>Tamarin book</h1>
 
-  <link rel="icon" href="../favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" href=".../icon.png">
-  <link rel="icon" type="image/png" sizes="256x256" href="../favicon-256x256.png">
-  <link rel="icon" type="image/png" sizes="128x128" href="../favicon-128x128.png">
-  <link rel="icon" type="image/png" sizes="64x64" href="../favicon-64x64.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<h2>Modeling and Analyzing Security Protocols with Tamarin:<br>
+    A Comprehensive Guide
+</h2>
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link type="text/css" rel="stylesheet" href="assets/css/bootstrap-responsive.min.css" />
-
-  <!-- Custom CSS for the site -->
-  <link type="text/css" rel="stylesheet" href="../assets/css/custom.css" />
-  <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
-
-
-</head>
-
-<body>
-  <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-      <a class="navbar-brand" href="../index.html">
-        <img src="../icon-top.png" width="34" height="34" class="d-inline-block align-top" alt="">
-        Tamarin Prover
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="dropdown" data-target="#navbarText"
-        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html#documentation">Documentation</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html#screenshots">Screenshots</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html#sourcecode_and_mailing_list">Sourcecode and Mailing List</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html#installation">Installation</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html#research_papers_and_theses">Publications</a>
-          </li>
-        </ul>
-    </nav>
-  </div>
-
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1 class="jumbotron-heading">Modeling and Analyzing Security Protocols with
-        Tamarin: A Comprehensive Guide</h1>
-      <p class="lead text-muted"><em>March 2025.</em>
-        We have been working on a book to support Tamarin users, which will be published soon by
-        Springer.
-        We are now excited to share a near-complete draft.
-      </p>
-
-      <p>
-        <a href="../manual/index.html" class="btn btn-primary" target="_blank"><i class="fa fa-book"
-            aria-hidden="true"></i> Manual</a>
-        <a href="" class="btn btn-primary"><i class="fa fa-book" aria-hidden="true"></i> Book draft</a>
-        <a href="../manual/master/book/002_installation.html" class="btn btn-secondary" target="_blank"><i
-            class="fa fa-download" aria-hidden="true"></i> Install Tamarin</a>
-        <!-- <a href="#" class="btn btn-secondary">Secondary action</a> -->
-      </p>
+<p>
+    By&nbsp;
+    {%- assign authors = "david cas jannik ralf" | split: " " -%}
+    {% for author in authors %}
+    {%- assign person = site.data.people[author] -%}
+    <a href="{{ person.website }}">{{ person.name }}</a>{% if forloop.last != true %}, {% else %}.{% endif %}
+    {% endfor %}
+</p>
+<p>Physical copies will soon be availabe through Springer.</p>
+<div class="book-download">
+    <p>Download the Tamarin book draft:</p>
+    <div class="button">
+        <a href="/book/downloads/Tamarin book-Draft v0.9.5.pdf">v0.9.5 PDF</a>
     </div>
-  </section>
-
-  <div class="main">
-    <div class="container">
-      <h5>
-        Modeling and Analyzing Security Protocols with Tamarin: A Comprehensive Guide
-      </h5>
-      <p>
-        By
-        <a href="https://www.inf.ethz.ch/personal/basin/">David Basin</a>,
-        <a href="https://cispa.saarland/group/cremers/index.html">Cas Cremers</a>,
-        <a href="https://www.jannikdreier.net/">Jannik Dreier</a>, and
-        <a href="https://people.inf.ethz.ch/rsasse/">Ralf Sasse</a>.
-      </p>
-      Download the Tamarin book draft:
-      <div class="book-download">
-        <ul>
-          <li>
-            <a href="downloads/Tamarin book-Draft v0.9.5.pdf">v0.9.5 PDF</a>
-          </li>
-        </ul>
-      </div>
-      <p>If you sign up to the <a href="https://groups.google.com/group/tamarin-prover" target="_blank">Tamarin Prover mailing list</a>, you will be notified when there are updates and when the final version of the book will be released by Springer.</p>
-      <p>
-        <em>Return to <a href="../index.html">Tamarin's main page</a>.</em>
-      </p>
-    </div>
-  </div>
-
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-    crossorigin="anonymous"></script>
-</body>
-
-</html>
+    </ul>
+</div>
+<p>If you sign up to the <a href="https://groups.google.com/group/tamarin-prover" target="_blank">Tamarin Prover mailing
+        list</a>, you will be notified when there are updates and when the final version of the book will be released by
+    Springer.</p>

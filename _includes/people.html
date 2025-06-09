@@ -1,0 +1,8 @@
+{% assign splitpeople = {{ include.people }} | split: " " %}
+Dog
+{{ splitpeople }}
+Cat
+{% for personid in splitpeople %}
+{%- assign person = site.data.people[personid] -%}
+<a href="{{ person.website }}">{{ person.name }}</a>{% if forloop.last != true %}, {% else %}.{% endif %}
+{% endfor %}

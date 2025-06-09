@@ -1,0 +1,25 @@
+---
+title: News
+layout: default
+---
+<div class="news">
+  <ul>
+    {% for post in site.posts %}
+    <li>
+      <div class="post-title">
+        <time class="dt-published" datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
+          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+          {{ post.date | date: date_format }}
+          {%- if post.updated_date -%}
+          &nbsp// Updated {{ post.updated_date | date: date_format }}
+          {%- endif -%}
+        </time>:
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </div>
+      <div class="post-excerpt">
+        {{ post.excerpt }}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
