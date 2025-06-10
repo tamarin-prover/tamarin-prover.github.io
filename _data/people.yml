@@ -1,13 +1,13 @@
+david:
+  name: David Basin
+  website: https://www.inf.ethz.ch/personal/basin/
+  core: true
+  currentcore: true
 cas:
   name: Cas Cremers
   website: https://cispa.saarland/group/cremers/index.html
   core: true
   maintainer: true
-  currentcore: true
-david:
-  name: David Basin
-  website: https://www.inf.ethz.ch/personal/basin/
-  core: true
   currentcore: true
 jannik:
   name: Jannik Dreier
@@ -15,6 +15,10 @@ jannik:
   core: true
   maintainer: true
   currentcore: true
+robert:
+  name: Robert Künnemann
+  website: https://cispa.de/en/people/kuennemann/
+  maintainer: true
 ralf:
   website: https://people.inf.ethz.ch/rsasse/
   name: Ralf Sasse
@@ -27,7 +31,3 @@ simon:
 benedikt:
   name: Benedikt Schmidt
   core: true
-robert:
-  name: Robert Künnemann
-  website: https://cispa.de/en/people/kuennemann/
-  maintainer: true
