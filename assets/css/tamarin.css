@@ -15,7 +15,6 @@
     --title-back: #ededed;
     --brown-lightest: #efc88e;
     --brown-hint: #f6e0bf;
-    --maxwidth: 1600px;
 }
 
 * {
@@ -93,7 +92,6 @@ body {
     margin-right: var(--margin-x);
     border-color: transparent;
     padding-top: 10px;
-    max-width: var(--maxwidth);
 }
 
 .titlepage .content {
@@ -350,10 +348,6 @@ body {
     align-items: center;
 }
 
-.title-content{
-    max-width: var(--maxwidth);
-}
-
 .title-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -389,14 +383,16 @@ body {
     display: flex;
     flex-wrap: wrap;
     padding-bottom: 20px;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    max-width: 1600px;
 }
 
 /* Responsive layout - makes a one column-layout instead of a two-column layout */
 .feature-text {
     width: 40%;
     padding-right: 10px;
+    max-width: 600px;
 }
 
 .feature-image {
