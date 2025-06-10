@@ -13,20 +13,26 @@ layout: default
   <h3>Core team</h3>
 
   <p>
-    {% assign authors = "david cas jannik simon ralf benedikt" %}
-    {% assign authors = authors | split: " " %}
-    {% for author in authors %}
-    {%- assign person = site.data.people[author] -%}
-    <a href="{{ person.website }}" target="_blank">{{ person.name }}</a>{% if forloop.last != true %}, {% else %}.{% endif %}
+    {% assign core = site.data.people | where:"core","true" %}
+    {% for person in core %}
+      {%- if person['website'] -%}
+        <a href="{{ person['website'] }}" target="_blank">{{ person['name'] }}</a>
+      {%- else -%}
+        {{ person['name'] }}
+      {%- endif -%}
+      {% if forloop.last != true %}, {% else %}.{% endif %}
     {% endfor %}
   </p>
   <h3>Current maintainers</h3>
   <p>
-    {% assign authors = "cas jannik robert ralf" %}
-    {% assign authors = authors | split: " " %}
-    {% for author in authors %}
-    {% assign person = site.data.people[author] %}
-    <a href="{{ person.website }}" target="_blank">{{ person.name }}</a>{% if forloop.last != true %}, {% else %}.{% endif %}
+    {% assign maintainers = site.data.people | where:"maintainer","true" %}
+    {% for person in maintainers %}
+      {%- if person['website'] -%}
+        <a href="{{ person['website'] }}" target="_blank">{{ person['name'] }}</a>
+      {%- else -%}
+        {{ person['name'] }}
+      {%- endif -%}
+      {% if forloop.last != true %}, {% else %}.{% endif %}
     {% endfor %}
   </p>
 
