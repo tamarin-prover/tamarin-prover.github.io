@@ -10,10 +10,10 @@ layout: default
   The Tamarin prover is an open-source security protocol verification tool that supports both falsification (attack finding) and unbounded verification (proving) in the symbolic model. Tamarin has been under active development since 2012.
 </p>
   
-  <h3>Core team</h3>
+  <h3>Current core team</h3>
 
   <p>
-    {% assign core = site.data.people | where:"core","true" %}
+    {% assign core = site.data.people | where:"currentcore","true" %}
     {% for person in core %}
       {%- if person['website'] -%}
         <a href="{{ person['website'] }}" target="_blank">{{ person['name'] }}</a>
