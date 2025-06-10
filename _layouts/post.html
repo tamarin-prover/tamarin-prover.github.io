@@ -14,9 +14,8 @@ layout: core
             &nbsp// Updated {{ page.updated_date | date: date_format }}
             {%- endif -%}
         </time> &nbsp//
-        {%- assign author = site.data.people[page.author] -%}
-        <a rel="author" href="{{ author.website }}" title="{{ author.name }}">
-{{ author.name }}</a>
+        {% assign author = site.data.people[page.author] %}
+        <a rel="author" href="{{ author.website }}" title="{{ author.name }}" target="{{ author.name }}">{{ author.name }}</a>
     </div>
 
     {{ content }}
