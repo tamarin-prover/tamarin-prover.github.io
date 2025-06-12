@@ -527,14 +527,24 @@ body {
 
 /* book page */
 
+.book-downloads {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
 .book-download {
     text-align: center;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     background-color: var(--brown-hint);
+    padding: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
+    min-width: 400px;
+    width: 45%;
 }
 
 .teaching-all h2 {
