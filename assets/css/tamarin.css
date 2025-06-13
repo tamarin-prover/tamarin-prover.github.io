@@ -441,8 +441,14 @@ body {
     padding: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-    min-width: 400px;
     width: 45%;
+    max-width: 500px;
+}
+
+@media (max-width: 600px) {
+    .book-download {
+        width: 100%;
+    }
 }
 
 .teaching-all h2 {
