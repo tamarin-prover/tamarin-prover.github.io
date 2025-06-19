@@ -376,6 +376,22 @@ body {
     font-size: 13px;
 }
 
+.col-two {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.col-two-top {}
+
+.col-two-bottom {
+    /* display: flex;
+    flex-direction: row;
+    justify-content: left;
+    gap: 5px; */
+}
+
 /* .documentation a.docu-link-external {
     background-color: var(--brown-hint);
 }
