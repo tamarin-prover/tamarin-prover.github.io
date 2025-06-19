@@ -3,54 +3,68 @@ title: Documentation
 layout: default
 ---
 
-<div class="documentation">
+<ol class="documentation">
 
-    <a class="docubox" href="/book/index.html">
+    <li class="docubox">
         <h2>Book</h2>
-        <p>The best starting point: problem context, modeling protocols, and the foundations of Tamarin's algorithms. Read the PDF for free or order a physical copy.</p>
-    </a>
+        <p>The best starting point: problem context, modeling protocols, and the foundations of Tamarin's algorithms.
+            Read the PDF for free or order a physical copy.</p>
+        <a href="/book/index.html" class="button">Get the book</a>
+    </li>
 
-    <a class="docubox" href="/teaching.html">
+    <li class="docu-link-external">
+        <h2>Tamarin {{ site.tamarinrelease }} Manual</h2>
+        <p>Technical reference for the latest stable release.
+        </p>
+        <a href="https://tamarin-prover.com/manual/master/book/001_introduction.html" target="manual"
+            class="button">Online</a>
+        <a href="https://tamarin-prover.com/manual/master/tex/tamarin-manual.pdf" target="manual" class="button">PDF</a>
+    </li>
+
+
+    <li class="docubox">
         <h2>Excercises, tutorials, and lecture slides</h2>
         <p>More ways to learn about Tamarin. Find what works best for you.</p>
-    </a>
+        <a href="/teaching.html" class="button">Teaching materials</a>
+    </li>
 
-
-    <a class="docubox" href="/publications.html">
+    <li class="docubox" href="/publications.html">
         <h2>Scientific literature</h2>
         <p>Read the science underpinning Tamarin, its latest technical developments, and selected
             papers that use Tamarin.</p>
-    </a>
+        <a href="/publications.html" class="button">Publications</a>
+    </li>
 
-    </div>
-<div class="documentation">
-
-    <a class="docu-link-external" target="_blank" href="https://tamarin-prover.com/manual/index.html">
-        <h2>Manual</h2>
-        <p>For technical reference and the latest details. Read the PDF or online HTML version, for the latest official release or the current bleeding-edge version.
-        </p>
-    </a>
-
-    <a class="docu-link-external" target="_blank" href="https://groups.google.com/group/tamarin-prover">
+    <li class="docu-link-external">
         <h2>Mailing list</h2>
         <p>Search or post on the mailing list for support from other users and developers.</p>
-    </a>
+        <a target="_blank" href="https://groups.google.com/group/tamarin-prover" class="button">Mailing list</a>
+    </li>
 
-    <a class="docu-link-external" target="_blank" href="https://github.com/tamarin-prover/tamarin-prover">
+    <li class="docu-link-external">
         <h2>Source code</h2>
-        <p>The source code behind Tamarin, and the issue tracker in case you encounter a bug.
-        </p>
+        <p>The source code behind Tamarin, and the issue tracker in case you encounter a bug.</p>
+        <a target="_blank" href="https://github.com/tamarin-prover/tamarin-prover" class="button">Source code</a>
+    </li>
     </a>
 
-        </div>
-<div class="documentation">
+    <li class="docu-link-external">
+        <h2>Manual {{ site.developname }}</h2>
+        <p>Technical reference for the bleeding-edge {{ site.developname }}.
+        </p>
+        <a href="https://tamarin-prover.com/manual/develop/book/001_introduction.html" target="manual"
+            class="button">Online</a>
+        <a href="https://tamarin-prover.com/manual/develop/tex/tamarin-manual.pdf" target="manual"
+            class="button">PDF</a>
+    </li>
 
-    <a class="docu-link-mail" target="_blank" href="mailto:tamarin-prover-maintainers@googlegroups.com">
+    <li class="docu-link-mail" target="_blank" href="mailto:tamarin-prover-maintainers@googlegroups.com">
         <h2>Mail</h2>
         <p>For other inquiries (not bug reports or requests for modeling advice!) you can reach the current maintainers
             of
             the
             Tamarin Prover via mail.</p>
-    </a>
+        <a target="_blank" href="mailto:tamarin-prover-maintainers@googlegroups.com" class="button">E-mail</a>
+    </li>
 
-</div>
+</ol>
