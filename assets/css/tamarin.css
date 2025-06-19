@@ -238,7 +238,8 @@ body {
     padding: 10px;
     padding-left: var(--margin-x);
     padding-right: var(--margin-x);
-    background-color: var(--title-back);
+    background-color: #45503d;
+    color: var(--white);
     display: flex-box;
     gap: 10px;
     justify-content: center;
@@ -257,22 +258,23 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 25px;
 }
 
 .title-logo img {
     width: 100%;
+    width: 80px;
+    /* box-shadow: 0px 0px 30px 2px var(--white); */
 }
 
-.title-logo {
-    width: 80px;
-}
+.title-logo {}
 
 
 .title-description {
     width: 60%;
     margin-bottom: 16px;
     margin-top: 16px;
+    font-size: 120%;
 }
 
 
