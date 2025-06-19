@@ -276,11 +276,13 @@ body {
     font-size: 110%;
     width: 60%;
 }
+
 @media (max-width: 1000px) {
     .title-description {
         width: 80%;
     }
 }
+
 @media (max-width: 600px) {
     .title-description {
         width: 100%;
