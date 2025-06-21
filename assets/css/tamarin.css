@@ -1,6 +1,7 @@
 :root {
     --margin-x: 30px;
     --black: #000000;
+    --black-half-shadow: #00000080;
     --gray-black: #232323;
     --gray-dark: #535353;
     --gray-dark-shadow: #000000AB;
@@ -17,6 +18,7 @@
     --title-back: #ededed;
     --brown-lightest: #efc88e;
     --brown-hint: #f6e0bf;
+    --banner-background: #45503d; 
 }
 
 * {
@@ -113,7 +115,7 @@ body {
     left: 0;
     padding-left: var(--margin-x);
     padding-right: var(--margin-x);
-    filter: drop-shadow(0px 0px 10px #00000080);
+    filter: drop-shadow(0px 0px 10px var(--black-half-shadow));
     height: 40px;
 }
 
@@ -121,7 +123,6 @@ body {
 .topnav a {
     float: left;
     display: block;
-    color: #f2f2f2;
     text-align: center;
     height: 40px;
     line-height: 40px;
@@ -151,12 +152,6 @@ body {
     color: var(--white);
     background-color: var(--gray-dark);
 }
-
-/* Add an active class to highlight the current page */
-/* .topnav a.active {
-    background-color: #04AA6D;
-    color: white;
-} */
 
 /* Hide the link that should open and close the topnav on small screens */
 .topnav .icon {
@@ -240,7 +235,7 @@ body {
     padding: 10px;
     padding-left: var(--margin-x);
     padding-right: var(--margin-x);
-    background-color: #45503d;
+    background-color: var(--banner-background);
     color: var(--white);
     display: flex-box;
     gap: 10px;
@@ -394,37 +389,6 @@ body {
     gap: 5px; */
 }
 
-/* .documentation a.docu-link-external {
-    background-color: var(--brown-hint);
-}
-
-.documentation a.docu-link-mail {
-    background-color: var(--gray-light);
-}
-
-.documentation a:hover {
-    filter: brightness(105%) drop-shadow(0px 3px 3px var(--gray-dark));
-}
-
-.documentation a:hover h2 {
-    filter: brightness(105%) drop-shadow(0px 0px 2px var(--white));
-} */
-
-/* .documentation a.docu-link-external h2:after {
-    display: inline-block;
-    content: url(/assets/images/open_in_new_24dp_535353_FILL0_wght400_GRAD0_opsz24.svg);
-    scale: 0.6;
-    vertical-align: middle;
-    float: right;
-}
-
-.documentation a.docu-link-mail h2:after {
-    display: inline-block;
-    content: url(/assets/images/outgoing_mail_24dp_535353_FILL0_wght400_GRAD0_opsz24.svg);
-    scale: 0.6;
-    vertical-align: middle;
-    float: right;
-} */
 
 /* news */
 
