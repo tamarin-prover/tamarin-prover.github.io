@@ -3,6 +3,7 @@
     --black: #000000;
     --gray-black: #232323;
     --gray-dark: #535353;
+    --gray-dark-shadow: #000000AB;
     --brown-dark: #7d5546;
     --gray-mid: #7f7f7f;
     --brown-mid: #a67a69;
@@ -11,6 +12,7 @@
     --gray-light: #d5d5d5;
     --pink: #ffcbb7;
     --white: #fbfbfb;
+    --white-shadow: #fffffffb;
     --green-light: #eaf1e7;
     --title-back: #ededed;
     --brown-lightest: #efc88e;
@@ -216,9 +218,9 @@ body {
 }
 
 .button:hover {
-    filter: brightness(120%) drop-shadow(0px 2px 2px var(--gray-dark));
-    text-shadow: 0px 1px 2px var(--gray-dark);
-    box-shadow: inset 0px -5px 10px -8px var(--white);
+    filter: brightness(120%) drop-shadow(0px 2px 2px var(--gray-dark-shadow));
+    text-shadow: 0px 1px 2px var(--gray-dark-shadow);
+    box-shadow: inset 0px -5px 10px -8px var(--white-shadow);
 }
 
 /* .button-external a:after {
