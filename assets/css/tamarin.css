@@ -108,13 +108,13 @@ body {
 .topnav {
     z-index: 100;
     background-color: var(--white);
-    overflow: hidden;
+    overflow: clip;
     position: fixed;
     width: 100vw;
     top: 0;
     left: 0;
-    padding-left: var(--margin-x);
-    padding-right: var(--margin-x);
+    padding-left: 16px; /* margin x minus the padding of the a below */
+    padding-right: 0;
     filter: drop-shadow(0px 0px 10px var(--black-half-shadow));
     height: var(--topnav-height);
 }
@@ -167,7 +167,7 @@ body {
     .topnav a.icon {
         display: block;
         position: absolute;
-        right: var(--margin-x);
+        right: 16px; /* margin x minus padding right of the a */
         top: 0;
     }
 }
