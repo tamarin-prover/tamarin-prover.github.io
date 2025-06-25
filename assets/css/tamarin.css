@@ -20,7 +20,7 @@
     --brown-lightest: #efc88e;
     --brown-hint: #f6e0bf;
     --banner-background: #45503d;
-    --topnav-height: 40px; 
+    --topnav-height: 40px;
 }
 
 * {
@@ -113,7 +113,8 @@ body {
     width: 100vw;
     top: 0;
     left: 0;
-    padding-left: 16px; /* margin x minus the padding of the a below */
+    padding-left: 16px;
+    /* margin x minus the padding of the a below */
     padding-right: 0;
     filter: drop-shadow(0px 0px 10px var(--black-half-shadow));
     height: var(--topnav-height);
@@ -156,6 +157,10 @@ body {
 /* Hide the link that should open and close the topnav on small screens */
 .topnav .icon {
     display: none;
+    position: absolute;
+    right: 16px;
+    /* 16px is the margin x minus padding right of the a */
+    top: 0;
 }
 
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
@@ -166,9 +171,6 @@ body {
 
     .topnav a.icon {
         display: block;
-        position: absolute;
-        right: 16px; /* margin x minus padding right of the a */
-        top: 0;
     }
 }
 
@@ -180,11 +182,7 @@ body {
         height: unset;
     }
 
-    .topnav.responsive a.icon {
-        position: absolute;
-        right: var(--margin-x);
-        top: 0;
-    }
+    .topnav.responsive a.icon {}
 
     .topnav.responsive a {
         float: none;
@@ -364,7 +362,7 @@ body {
 }
 
 .software li {
-    background-color: var(--gray-lightest);    
+    background-color: var(--gray-lightest);
 }
 
 .subboxmenu h2 {
