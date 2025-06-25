@@ -1,27 +1,30 @@
-:root {
-    --margin-x: 30px;
-    --black: #000000;
-    --black-half-shadow: #00000080;
-    --gray-black: #232323;
-    --gray-dark: #535353;
-    --gray-dark-shadow: #000000AB;
-    --brown-dark: #7d5546;
-    --gray-mid: #7f7f7f;
-    --brown-mid: #a67a69;
-    --brown-light: #b87b1d;
-    --green: #6abe30;
-    --gray-light: #d5d5d5;
-    --gray-lightest: #e4e2e6;
-    --pink: #ffcbb7;
-    --white: #fbfbfb;
-    --white-shadow: #fffffffb;
-    --green-light: #eaf1e7;
-    --title-back: #ededed;
-    --brown-lightest: #efc88e;
-    --brown-hint: #f6e0bf;
-    --banner-background: #45503d;
-    --topnav-height: 40px;
-}
+---
+---
+
+$margin-x: 30px;
+$black: #000000;
+$black-half-shadow: #00000080;
+$gray-black: #232323;
+$gray-dark: #535353;
+$gray-dark-shadow: #000000AB;
+$brown-dark: #7d5546;
+$gray-mid: #7f7f7f;
+$brown-mid: #a67a69;
+$brown-light: #b87b1d;
+$green: #6abe30;
+$gray-light: #d5d5d5;
+$gray-lightest: #e4e2e6;
+$pink: #ffcbb7;
+$white: #fbfbfb;
+$white-shadow: #fffffffb;
+$green-light: #eaf1e7;
+$title-back: #ededed;
+$brown-lightest: #efc88e;
+$brown-hint: #f6e0bf;
+$banner-background: #45503d;
+$topnav-height: 40px;
+$fontstack: "Figtree", "Arial", sans-serif;
+$topnav-halfspace: 14px;
 
 * {
     margin: 0;
@@ -38,7 +41,7 @@ h1 {
 }
 
 h1::before {
-    background: var(--brown-light);
+    background: $brown-light;
     content: "";
     height: 22px;
     width: 22px;
@@ -67,23 +70,23 @@ ul {
 }
 
 .figtree-main {
-    font-family: "Figtree", "Arial", sans-serif;
+    font-family: $fontstack;
     font-optical-sizing: auto;
     font-style: normal;
 }
 
 body {
-    background-color: var(--white);
+    background-color: $white;
     padding: 0px;
     margin: 0px;
     border: 0px;
-    color: var(--gray-dark);
-    font-family: "Figtree", "Arial", sans-serif;
+    color: $gray-dark;
+    font-family: $fontstack;
     font-optical-sizing: auto;
     font-style: normal;
     font-size: 16px;
-    padding-top: var(--topnav-height);
-    padding-bottom: var(--topnav-height);
+    padding-top: $topnav-height;
+    padding-bottom: $topnav-height;
 }
 
 .content p {
@@ -92,15 +95,15 @@ body {
 }
 
 code {
-    color: var(--brown-dark);
+    color: $brown-dark;
 }
 
 pre > code {
 }
 
 .content {
-    margin-left: var(--margin-x);
-    margin-right: var(--margin-x);
+    margin-left: $margin-x;
+    margin-right: $margin-x;
     border-color: transparent;
     padding-top: 10px;
 }
@@ -114,68 +117,66 @@ pre > code {
 /* Add a black background color to the top navigation */
 .topnav {
     z-index: 100;
-    background-color: var(--white);
+    background-color: $white;
     overflow: clip;
     position: fixed;
     width: 100vw;
     top: 0;
     left: 0;
-    padding-left: 16px;
-    /* margin x minus the padding of the a below */
+    padding-left: $margin-x - $topnav-halfspace;
     padding-right: 0;
-    filter: drop-shadow(0px 0px 10px var(--black-half-shadow));
-    height: var(--topnav-height);
+    filter: drop-shadow(0px 0px 10px $black-half-shadow);
+    height: $topnav-height;
+    
+    /* Style the links inside the navigation bar */
+    a {
+        float: left;
+        display: block;
+        text-align: center;
+        height: $topnav-height;
+        line-height: $topnav-height;
+        padding-left: $topnav-halfspace;
+        padding-right: $topnav-halfspace;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        text-decoration: none;
+        font-size: 16px;
+        color: $gray-dark;
+    }
+    
+    /* Tamarin small logo */
+    img {
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+    }
+    
+    /* Create a right-aligned (split) link inside the navigation bar */
+    a.split {
+        float: right;
+    }
+    
+    /* Change the color of links on hover */
+    a:hover {
+        color: $white;
+        background-color: $gray-dark;
+    }
+    
+    /* Hide the link that should open and close the topnav on small screens */
+    .icon {
+        display: none;
+        position: absolute;
+        right: $margin-x - $topnav-halfspace;
+        top: 0;
+    }
 }
-
-/* Style the links inside the navigation bar */
-.topnav a {
-    float: left;
-    display: block;
-    text-align: center;
-    height: var(--topnav-height);
-    line-height: var(--topnav-height);
-    padding-left: 14px;
-    padding-right: 14px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    text-decoration: none;
-    font-size: 16px;
-    color: var(--gray-dark);
-}
-
-/* Tamarin small logo */
-.topnav img {
-    width: 24px;
-    height: 24px;
-    vertical-align: middle;
-}
-
-/* Create a right-aligned (split) link inside the navigation bar */
-.topnav a.split {
-    float: right;
-}
-
-/* Change the color of links on hover */
-.topnav a:hover {
-    color: var(--white);
-    background-color: var(--gray-dark);
-}
-
-/* Hide the link that should open and close the topnav on small screens */
-.topnav .icon {
-    display: none;
-    position: absolute;
-    right: 16px;
-    /* 16px is the margin x minus padding right of the a */
-    top: 0;
-}
-
+    
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
 @media screen and (max-width: 600px) {
     .topnav a:not(:first-child) {
         display: none;
     }
-
+        
     .topnav a.icon {
         display: block;
     }
@@ -185,7 +186,7 @@ pre > code {
 @media screen and (max-width: 600px) {
     .topnav.responsive {
         /* position: fixed; */
-        filter: drop-shadow(0px 0px 10px var(--gray-dark));
+        filter: drop-shadow(0px 0px 10px $gray-dark);
         height: unset;
     }
 
@@ -196,7 +197,7 @@ pre > code {
         display: block;
         text-align: left;
         border-bottom: 1px solid;
-        border-color: var(--gray-light);
+        border-color: $gray-light;
 
     }
 }
@@ -208,18 +209,18 @@ pre > code {
     padding-left: 15px;
     padding-right: 15px;
     height: 30px;
-    background-color: var(--brown-dark);
+    background-color: $brown-dark;
     justify-content: center;
     align-items: center;
     font-weight: 600;
     text-decoration: none;
-    color: var(--white);
+    color: $white;
 }
 
 .button:hover {
-    filter: brightness(120%) drop-shadow(0px 2px 2px var(--gray-dark-shadow));
-    text-shadow: 0px 1px 2px var(--gray-dark-shadow);
-    box-shadow: inset 0px -5px 10px -8px var(--white-shadow);
+    filter: brightness(120%) drop-shadow(0px 2px 2px $gray-dark-shadow);
+    text-shadow: 0px 1px 2px $gray-dark-shadow;
+    box-shadow: inset 0px -5px 10px -8px $white-shadow;
 }
 
 /* .button-external a:after {
@@ -230,17 +231,17 @@ pre > code {
 } */
 
 .button-book {
-    background-color: var(--brown-light);
+    background-color: $brown-light;
 }
 
 /* Title part of the main page */
 
 .title-banner {
     padding: 10px;
-    padding-left: var(--margin-x);
-    padding-right: var(--margin-x);
-    background-color: var(--banner-background);
-    color: var(--white);
+    padding-left: $margin-x;
+    padding-right: $margin-x;
+    background-color: $banner-background;
+    color: $white;
     display: flex-box;
     gap: 10px;
     justify-content: center;
@@ -265,7 +266,7 @@ pre > code {
 .title-logo img {
     width: 100%;
     width: 80px;
-    /* box-shadow: 0px 0px 30px 2px var(--white); */
+    /* box-shadow: 0px 0px 30px 2px $white; */
 }
 
 .title-logo {}
@@ -310,7 +311,7 @@ pre > code {
 .feature-image {
     display: flex;
     /* height: 100px; */
-    background-color: var(--green-light);
+    background-color: $green-light;
     justify-content: center;
     align-items: center;
     overflow: hidden;
@@ -342,43 +343,44 @@ pre > code {
     margin-top: 0px;
     padding-top: 0px;
     margin-bottom: 10px;
-    color: var(--gray-mid);
+    color: $gray-mid;
 }
 
 /* Documentation and software use subboxmenu class */
 
-.subboxmenu ol {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    grid-gap: 1rem;
-    padding: 0px;
-    margin: 0px;
-    margin-bottom: 10px;
+.subboxmenu {
+    ol {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-gap: 1rem;
+        padding: 0px;
+        margin: 0px;
+        margin-bottom: 10px;
+    }
+    li {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        text-decoration: none;
+        color: $gray-dark;
+        background-color: $green-light;
+        list-style-type: none;
+    }
+    h2 {
+        margin-top: 0px;
+        margin-bottom: 5px;
+    }
+
+    p {
+        color: $gray-mid;
+        font-size: 13px;
+    }
 }
 
-.subboxmenu li {
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    text-decoration: none;
-    color: var(--gray-dark);
-    background-color: var(--green-light);
-    list-style-type: none;
-}
 
 .software li {
-    background-color: var(--gray-lightest);
-}
-
-.subboxmenu h2 {
-    margin-top: 0px;
-    margin-bottom: 5px;
-}
-
-.subboxmenu p {
-    color: var(--gray-mid);
-    font-size: 13px;
+    background-color: $gray-lightest;
 }
 
 .col-two {
@@ -421,7 +423,7 @@ pre > code {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    background-color: var(--brown-hint);
+    background-color: $brown-hint;
     padding: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -434,6 +436,8 @@ pre > code {
         width: 100%;
     }
 }
+
+/* teaching materials */
 
 .teaching-all h2 {
     padding-top: 24px;
