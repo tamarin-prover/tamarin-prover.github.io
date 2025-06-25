@@ -188,17 +188,16 @@ pre > code {
         /* position: fixed; */
         filter: drop-shadow(0px 0px 10px $gray-dark);
         height: unset;
-    }
-
-    .topnav.responsive a.icon {}
-
-    .topnav.responsive a {
-        float: none;
-        display: block;
-        text-align: left;
-        border-bottom: 1px solid;
-        border-color: $gray-light;
-
+        
+        a.icon {}
+        
+        a {
+            float: none;
+            display: block;
+            text-align: left;
+            border-bottom: 1px solid;
+            border-color: $gray-light;      
+        }
     }
 }
 
