@@ -4,10 +4,9 @@ layout: default
 ---
 
 
-Tamarin is supported through plugins, extensions, and syntax definitions for several editors. Below you can find extensions for Visual Studio Code, VIM, Emacs, [Sublime Text 3](#sublime-text-3), Notepad++, and Atom.
+Tamarin is supported through plugins, extensions, and syntax definitions for several editors. Below you can find extensions for Visual Studio Code, VIM, Emacs, Sublime Text 3, Notepad++, and Atom.
 
-The source code of some of these extensions can be found Uunder the [etc](https://github.com/tamarin-prover/tamarin-prover/tree/develop/etc) folder contained
-in the Tamarin Prover project.
+The source code of some of these extensions can be found in the [`etc/`](https://github.com/tamarin-prover/tamarin-prover/tree/develop/etc) folder of Tamarin's source code repository.
 
 
 ## VSCode
@@ -28,7 +27,6 @@ from this repository. The instructions below should be translatable to other plu
 
 1. Make sure you installed Vundle (or your favorite plugin manager)
 2. Put the below, or equivalent instructions, into your `.vimrc`:
-
 ```vimrc
 Plugin 'tamarin-prover/editors'
 ```
@@ -44,9 +42,15 @@ If you install the Vim support files using this method, you will need to keep th
 1. Create `~/.vim/` directory if not already existing, which is the typical location for `$VIMRUNTIME`
 2. Copy the contents of `etc/vim` to `~/.vim/`, including the folders.
 
+## Emacs
+
+The [`spthy-mode.el`](https://github.com/tamarin-prover/tamarin-prover/blob/develop/etc/spthy-mode.el)
+implements a SPTHY major mode in Emacs. You can load it with `M-x load-file`, or add it to your `.emacs` in
+your favorite way.
+
 ## Sublime Text 3
 
-[editor-sublime](https://github.com/tamarin-prover/editor-sublime) is a plug-in developed for the Sublime Text 3 editor. The plug-in has the following functionality:
+[editor-sublime](https://github.com/tamarin-prover/editor-sublime) is a plug-in for the Sublime Text 3 editor to support Tamarin users. The plug-in has the following functionality:
 - Basic Syntaxes
 - Snippets for Theories, Rules, Restrictions and Lemmas
 
@@ -71,13 +75,7 @@ the `git` tool installed.
 
 ## Notepad++
 
-Follow steps from the [Notepad++ Wiki](http://docs.notepad-plus-plus.org/index.php/User_Defined_Language_Files#How_to_install_user_defined_language_files) using the [notepad_plus_plus_spthy.xml](https://github.com/tamarin-prover/tamarin-prover/blob/develop/etc/notepad_plus_plus_spthy.xml) file.
-
-## Emacs
-
-The [spthy.el](https://github.com/tamarin-prover/tamarin-prover/blob/develop/etc/spthy-mode.el)
-implements a SPTHY major mode. You can load it with `M-x load-file`, or add it to your `.emacs` in
-your favourite way.
+Follow the "Import a UDL" steps from the [Notepad++ documentation](https://npp-user-manual.org/docs/user-defined-language-system/) using the [notepad_plus_plus_spthy.xml](https://github.com/tamarin-prover/tamarin-prover/blob/develop/etc/notepad_plus_plus_spthy.xml) file.
 
 ## Atom
 

@@ -91,6 +91,13 @@ body {
     padding-bottom: 0.6em;
 }
 
+code {
+    color: var(--brown-dark);
+}
+
+pre > code {
+}
+
 .content {
     margin-left: var(--margin-x);
     margin-right: var(--margin-x);
@@ -202,7 +209,6 @@ body {
     padding-right: 15px;
     height: 30px;
     background-color: var(--brown-dark);
-    color: var(--white);
     justify-content: center;
     align-items: center;
     font-weight: 600;

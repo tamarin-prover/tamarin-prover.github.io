@@ -86,7 +86,7 @@ Tamarin on your laptop, you can do that. The cpu/memory intensive
 reasoning part of the tool will then run on the faster machine, while you
 just run the GUI locally, i.e., the web browser of your choice. To do
 this, you forward your port 3001 to the port 3001 of your server
-with the following command, replacing ```SERVERNAME``` appropriately.
+with the following command, replacing `SERVERNAME` appropriately.
 
 ```
 ssh -L 3001:localhost:3001 SERVERNAME
