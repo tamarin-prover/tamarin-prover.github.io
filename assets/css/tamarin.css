@@ -11,6 +11,7 @@
     --brown-light: #b87b1d;
     --green: #6abe30;
     --gray-light: #d5d5d5;
+    --gray-lightest: #e4e2e6;
     --pink: #ffcbb7;
     --white: #fbfbfb;
     --white-shadow: #fffffffb;
@@ -18,7 +19,8 @@
     --title-back: #ededed;
     --brown-lightest: #efc88e;
     --brown-hint: #f6e0bf;
-    --banner-background: #45503d; 
+    --banner-background: #45503d;
+    --topnav-height: 40px; 
 }
 
 * {
@@ -44,8 +46,6 @@ h1::before {
     margin-right: 12px;
     display: inline-block;
 }
-
-;
 
 h2 {
     margin-top: 0.83em;
@@ -82,8 +82,8 @@ body {
     font-optical-sizing: auto;
     font-style: normal;
     font-size: 16px;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: var(--topnav-height);
+    padding-bottom: var(--topnav-height);
 }
 
 .content p {
@@ -116,7 +116,7 @@ body {
     padding-left: var(--margin-x);
     padding-right: var(--margin-x);
     filter: drop-shadow(0px 0px 10px var(--black-half-shadow));
-    height: 40px;
+    height: var(--topnav-height);
 }
 
 /* Style the links inside the navigation bar */
@@ -124,8 +124,8 @@ body {
     float: left;
     display: block;
     text-align: center;
-    height: 40px;
-    line-height: 40px;
+    height: var(--topnav-height);
+    line-height: var(--topnav-height);
     padding-left: 14px;
     padding-right: 14px;
     padding-top: 0px;
@@ -341,9 +341,9 @@ body {
     color: var(--gray-mid);
 }
 
-/* Documentation */
+/* Documentation and software use subboxmenu class */
 
-.documentation {
+.subboxmenu ol {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     grid-gap: 1rem;
@@ -352,7 +352,7 @@ body {
     margin-bottom: 10px;
 }
 
-.documentation li {
+.subboxmenu li {
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 10px;
@@ -363,12 +363,16 @@ body {
     list-style-type: none;
 }
 
-.documentation h2 {
+.software li {
+    background-color: var(--gray-lightest);    
+}
+
+.subboxmenu h2 {
     margin-top: 0px;
     margin-bottom: 5px;
 }
 
-.documentation p {
+.subboxmenu p {
     color: var(--gray-mid);
     font-size: 13px;
 }
@@ -388,7 +392,6 @@ body {
     justify-content: left;
     gap: 5px; */
 }
-
 
 /* news */
 
@@ -429,7 +432,7 @@ body {
 }
 
 .teaching-all h2 {
-    padding-top: 30px;
+    padding-top: 24px;
 }
 
 .teaching-all h3 {
