@@ -470,5 +470,6 @@ pre > code {
 .external::after {
     @extend .material-symbols-sharp;
     content: "open_in_new";
+    padding-left: 2px;
 }
 
