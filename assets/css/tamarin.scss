@@ -24,6 +24,7 @@ $brown-hint: #f6e0bf;
 $banner-background: #45503d;
 $topnav-height: 40px;
 $fontstack: "Figtree", "Arial", sans-serif;
+$fonticon: "Material Symbols Sharp";
 $topnav-halfspace: 14px;
 
 * {
@@ -80,13 +81,22 @@ body {
     padding: 0px;
     margin: 0px;
     border: 0px;
-    color: $gray-dark;
     font-family: $fontstack;
+    padding-top: $topnav-height;
+    padding-bottom: $topnav-height;
+    color: $gray-dark;
+}
+
+body, .material-symbols-sharp {
     font-optical-sizing: auto;
     font-style: normal;
     font-size: 16px;
-    padding-top: $topnav-height;
-    padding-bottom: $topnav-height;
+}
+
+.material-symbols-sharp {
+    font-family: $fonticon;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+    vertical-align: middle;
 }
 
 .content p {
@@ -126,21 +136,24 @@ pre > code {
     padding-right: 0;
     filter: drop-shadow(0px 0px 10px $black-half-shadow);
     height: $topnav-height;
-    
-    /* Style the links inside the navigation bar */
+    font-size: 16px;
+
     a {
+        color: $gray-dark;
+        text-decoration: none;
         float: left;
         display: block;
-        text-align: center;
-        height: $topnav-height;
-        line-height: $topnav-height;
         padding-left: $topnav-halfspace;
         padding-right: $topnav-halfspace;
         padding-top: 0px;
         padding-bottom: 0px;
-        text-decoration: none;
-        font-size: 16px;
-        color: $gray-dark;
+    }
+    
+    /* Style the links inside the navigation bar */
+    a, .icon i {
+        text-align: center;
+        height: $topnav-height;
+        line-height: $topnav-height;
     }
     
     /* Tamarin small logo */
@@ -168,6 +181,9 @@ pre > code {
         right: $margin-x - $topnav-halfspace;
         top: 0;
     }
+    .icon i::after {
+        content: "menu";
+    }
 }
     
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
@@ -188,7 +204,9 @@ pre > code {
         filter: drop-shadow(0px 0px 10px $gray-dark);
         height: unset;
         
-        a.icon {}
+        a.icon i::after {
+            content: "close";
+        }
         
         a {
             float: none;
@@ -447,3 +465,10 @@ pre > code {
 .teaching-all h3 {
     padding-top: 10px;
 }
+
+/* External links */
+.external::after {
+    @extend .material-symbols-sharp;
+    content: "open_in_new";
+}
+
