@@ -466,10 +466,49 @@ pre > code {
     padding-top: 10px;
 }
 
-/* External links */
-.external::after {
+.icon-after {
     @extend .material-symbols-sharp;
-    content: "open_in_new";
     padding-left: 2px;
+    vertical-align: bottom;
+    align-items: center;
+    display: inline-block;
+    text-decoration: none;
+}
+
+/* External link */
+.external::after {
+    @extend .icon-after;
+    content: "open_in_new";
+}
+
+/* Feed */
+.feed::after {
+    @extend .icon-after;
+    content: "rss_feed";
+}
+
+/* Group */
+.group::after {
+    @extend .icon-after;
+    content: "groups";
+    padding-left: 5px;
+}
+
+/* Mail */
+.mail::after {
+    @extend .icon-after;
+    content: "mail";
+}
+
+/* Download */
+.download::after {
+    @extend .icon-after;
+    content: "download";
+}
+
+/* PDF download */
+.pdf::after {
+    @extend .icon-after;
+    content: "docs";
 }
 
