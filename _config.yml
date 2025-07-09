@@ -3,3 +3,9 @@ tamarinrelease: "1.10"
 developname: "development branch"
 sass:
   style: compact
+
+collections:
+  publications:
+    output: true
+    permalink: /:collection/:name
+
