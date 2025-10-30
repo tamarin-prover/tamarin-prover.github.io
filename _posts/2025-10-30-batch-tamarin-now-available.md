@@ -36,9 +36,9 @@ A full report of the first version of `batch-tamarin`, including its architectur
 
 ## Reproducibility ?
 
-Yes, reproducibility was one of the main design goals for `batch-tamarin`. The tool provides Dockerfiles that can be used to build Docker images with all dependencies needed to run `batch-tamarin` with a preconfigured environment containing Tamarin Prover. Currently, version 1.10.0 and the latest development version are available with `batch-tamarin`. These Dockerfiles are available in the GitHub repository [here](https://github.com/tamarin-prover/batch-tamarin/tree/main/examples/__dockerfiles__/with-batch-tamarin).
+Yes, reproducibility was one of the main design goals for `batch-tamarin`. The tool provides Dockerfiles that can be used to build Docker images with all dependencies needed to run `batch-tamarin` with a preconfigured environment containing Tamarin Prover. Currently, version 1.10.0 to 1.6.1 and the latest development version are available with `batch-tamarin`. These Dockerfiles are available in the GitHub repository [here](https://github.com/tamarin-prover/batch-tamarin/tree/main/examples/__dockerfiles__/with-batch-tamarin). Ready to use Docker images are available on DockerHub: [lmandrelli/tamarin-prover-and-batch](https://hub.docker.com/repository/docker/lmandrelli/tamarin-prover-and-batch)
 
-Docker images are also available on DockerHub: [lmandrelli/tamarin-prover](https://hub.docker.com/r/lmandrelli/tamarin-prover) providing Tamarin Prover from version 1.4.0 up to 1.10.0, both for amd64 and arm64 architectures. The Dockerfiles used to build these images are available in the GitHub repository [here](https://github.com/tamarin-prover/batch-tamarin/tree/main/examples/__dockerfiles__/tamarin-only).
+Docker images of the Tamarin prover only are also available on DockerHub: [lmandrelli/tamarin-prover](https://hub.docker.com/r/lmandrelli/tamarin-prover) providing Tamarin Prover from version 1.4.0 up to 1.10.0, both for amd64 and arm64 architectures. The Dockerfiles used to build these images are available in the GitHub repository [here](https://github.com/tamarin-prover/batch-tamarin/tree/main/examples/__dockerfiles__/tamarin-only).
 
 ## Installation
 
