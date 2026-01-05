@@ -116,7 +116,7 @@ installed it through Homebrew, you may have to uninstall and untap that version 
   * `brew uninstall tamarin-prover`
   * `brew untap homebrew/science`
 
-#### After an update/pull/release Tamarin does not compile any more.
+#### After an update/pull/release Tamarin does not compileany more.
 
 Try running `stack upgrade` and `stack update`. An out-of-date stack version can cause spurious
 compilation errors.
