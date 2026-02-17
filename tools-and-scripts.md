@@ -1,6 +1,7 @@
 ---
 title: Tools and scripts
 layout: default
+category: software
 ---
 
 

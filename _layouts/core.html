@@ -42,13 +42,13 @@
 <body>
 
     <div class="topnav" id="myTopnav">
-        <a href="/index.html" class="active">
+        <a href="/index.html" {% if page.category == 'home' %}class="active"{% endif %}>
             <img src="/assets/images/tamarin-logo.png" height="20px"> TAMARIN Prover
         </a>
-        <a href="/news.html">News</a>
-        <a href="/software.html">Software</a>
-        <a href="/documentation.html">Documentation</a>
-        <a href="/about.html">About</a>
+        <a href="/news.html" {% if page.category == 'news' or page.layout == 'post' %}class="active"{% endif %}>News</a>
+        <a href="/software.html" {% if page.category == 'software' %}class="active"{% endif %}>Software</a>
+        <a href="/documentation.html" {% if page.category == 'documentation' %}class="active"{% endif %}>Documentation</a>
+        <a href="/about.html" {% if page.category == 'about' %}class="active"{% endif %}>About</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="material-symbols-sharp"></i>
         </a>

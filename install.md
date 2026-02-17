@@ -1,6 +1,7 @@
 ---
 title: Install Tamarin
 layout: default
+category: software
 ---
 
 ## Installation on macOS or Linux {#sec:maclinux}

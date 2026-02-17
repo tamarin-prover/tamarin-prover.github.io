@@ -168,6 +168,12 @@ pre > code {
         float: right;
     }
     
+    /* Active/current page */
+    a.active {
+        background-color: $gray-lightest;
+        color: $gray-dark;
+    }
+    
     /* Change the color of links on hover */
     a:hover {
         color: $white;
