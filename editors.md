@@ -1,6 +1,7 @@
 ---
 title: Editor integrations
 layout: default
+category: software
 ---
 
 
