@@ -5,7 +5,7 @@ date: 2026-03-10 10:00 +0100
 author: david, cas, jannik, ralf
 ---
 
-We are proud to share that the Tamarin Prover team won the IACR RWC [2026 Levchin Prize](https://rwc.iacr.org/LevchinPrize/) for "For developing the Tamarin prover, and its use in the analysis of real world security protocols". 
+We are proud to share that the Tamarin Prover team won the  International Association for Cryptologic Research (IACR) Real World Cryptography [2026 Levchin Prize](https://rwc.iacr.org/LevchinPrize/) for "developing the Tamarin prover, and its use in the analysis of real world security protocols". 
 
 We are extremely grateful to all of our developers, contributors, and users, who have made Tamarin a success throughout the years. We look forward to many exciting new features and use cases in the future. Thank you all!
 
