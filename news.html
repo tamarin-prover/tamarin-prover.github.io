@@ -24,6 +24,9 @@ category: news
       </div>
       <div class="post-excerpt">
         {{ post.excerpt }}
+        {%- if post.content.size > post.excerpt.size -%}
+          <a href="{{ post.url }}">Read more...</a>
+        {%- endif -%}
       </div>
     </li>
     {% endfor %}
