@@ -5,4 +5,5 @@ summary: 'Xenia Hofmeier&#39;s bachelor thesis <a href="https://www.ethz.ch/cont
 url: "https://www.ethz.ch/content/dam/ethz/special-interest/infk/inst-infsec/information-security-group-dam/research/software/ba-19-hofmeier-oidc.pdf"
 url: "https://www.ethz.ch/content/dam/ethz/special-interest/infk/inst-infsec/information-security-group-dam/research/software/hofmeier-oidc.zip"
 thesis: bachelor
+year: 2019
 ---

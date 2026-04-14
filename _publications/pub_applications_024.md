@@ -5,4 +5,5 @@ summary: 'Jorden Whitefield&#39;s PhD thesis <a href="http://epubs.surrey.ac.uk/
 url: "http://epubs.surrey.ac.uk/852100/"
 url: "https://doi.org/10.5281/zenodo.3256109"
 thesis: PhD
+year: 2020
 ---

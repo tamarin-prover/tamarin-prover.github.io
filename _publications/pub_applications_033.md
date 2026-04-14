@@ -5,4 +5,5 @@ summary: 'Vincent Stettler&#39;s bachelor thesis <a href="https://www.ethz.ch/co
 url: "https://www.ethz.ch/content/dam/ethz/special-interest/infk/inst-infsec/information-security-group-dam/research/software/TLS-1.3_thesis_vincent_stettler.pdf"
 url: "https://www.ethz.ch/content/dam/ethz/special-interest/infk/inst-infsec/information-security-group-dam/research/software/TLS-1.3-v13.zip"
 thesis: bachelor
+year: 2016
 ---

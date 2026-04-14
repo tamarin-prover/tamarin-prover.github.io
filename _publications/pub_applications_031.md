@@ -5,4 +5,5 @@ summary: 'Andris Suter-D&ouml;rig&#39;s bachelor thesis <a href="https://www.eth
 url: "https://www.ethz.ch/content/dam/ethz/special-interest/infk/inst-infsec/information-security-group-dam/research/software/noise_suter-doerig.pdf"
 url: "https://www.ethz.ch/content/dam/ethz/special-interest/infk/inst-infsec/information-security-group-dam/research/software/noise.zip"
 thesis: bachelor
+year: 2018
 ---

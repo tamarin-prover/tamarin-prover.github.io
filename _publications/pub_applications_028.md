@@ -5,4 +5,5 @@ summary: 'Sandra Dünki&#39;s master thesis <a href="https://www.ethz.ch/content
 url: "https://www.ethz.ch/content/dam/ethz/special-interest/infk/inst-infsec/information-security-group-dam/research/software/ma-19-duenki-webmodel.pdf"
 url: "https://www.ethz.ch/content/dam/ethz/special-interest/infk/inst-infsec/information-security-group-dam/research/software/duenkis-webmodel.zip"
 thesis: master
+year: 2019
 ---

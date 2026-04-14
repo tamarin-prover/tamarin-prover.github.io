@@ -5,4 +5,5 @@ summary: 'Sabina Fischlin&#39;s master thesis <a href="https://www.ethz.ch/conte
 url: "https://www.ethz.ch/content/dam/ethz/special-interest/infk/inst-infsec/information-security-group-dam/research/software/ma-21-fischlin-zkp.pdf"
 url: "https://www.ethz.ch/content/dam/ethz/special-interest/infk/inst-infsec/information-security-group-dam/research/software/fischlin-zk_src.zip"
 thesis: master
+year: 2021
 ---

@@ -5,4 +5,5 @@ summary: 'David Lanzenberger&#39;s bachelor thesis <a href="https://www.ethz.ch/
 url: "https://www.ethz.ch/content/dam/ethz/special-interest/infk/inst-infsec/information-security-group-dam/research/software/5G_lanzenberger.pdf"
 url: "https://www.ethz.ch/content/dam/ethz/special-interest/infk/inst-infsec/information-security-group-dam/research/software/5G_lanzenberger.zip"
 thesis: bachelor
+year: 2017
 ---
