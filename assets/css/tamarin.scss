@@ -22,7 +22,7 @@ $title-back: #ededed;
 $brown-lightest: #efc88e;
 $brown-hint: #f6e0bf;
 $banner-background: #45503d;
-$top-menu-color: mix($green, $banner-background, 50%);
+$top-menu-color: mix($green, $banner-background, 40%);
 $topnav-height: 40px;
 $fontstack: "Figtree", "Arial", sans-serif;
 $fonticon: "Material Symbols Sharp";
@@ -172,7 +172,7 @@ pre > code {
     /* Active/current page */
     a.active {
         background-color: $green;
-        color: $gray-dark;
+        color: $gray-black;
     }
     
     /* Change the color of links on hover */
