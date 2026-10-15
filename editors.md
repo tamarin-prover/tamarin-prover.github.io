@@ -49,6 +49,8 @@ The [`spthy-mode.el`](https://github.com/tamarin-prover/tamarin-prover/blob/deve
 implements a SPTHY major mode in Emacs. You can load it with `M-x load-file`, or add it to your `.emacs` in
 your favorite way.
 
+For Emacs 31 or later, [spthy-ts-mode](https://github.com/fnussbaum/spthy-ts-mode) provides a more featureful tree-sitter-based major mode.
+
 ## Sublime Text 3
 
 [editor-sublime](https://github.com/tamarin-prover/editor-sublime) is a plug-in for the Sublime Text 3 editor to support Tamarin users. The plug-in has the following functionality:
