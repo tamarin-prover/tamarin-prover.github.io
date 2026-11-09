@@ -36,5 +36,6 @@ lmandrelli:
   website: https://github.com/lmandrelli
 kevin:
   name: Kevin Milner
+  website: http://about.kamilner.ca/
   email-dontshow: kamilner@kamilner.ca
   maintainer: true
