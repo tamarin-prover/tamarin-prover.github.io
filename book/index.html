@@ -12,11 +12,7 @@ category: documentation
 
 <p>
     By&nbsp;
-    {%- assign authors = "david cas jannik ralf" | split: " " -%}
-    {% for author in authors %}
-    {%- assign person = site.data.people[author] -%}
-    <a href="{{ person.website }}">{{ person.name }}</a>{% if forloop.last != true %}, {% else %}.{% endif %}
-    {% endfor %}
+    {%- include people.html ids="david cas jannik ralf" %}
 </p>
 <div class="book-downloads">
     <div class="book-download">

@@ -1,0 +1,17 @@
+{%- comment -%}
+  Renders a person's name, linked to their website if they have one,
+  otherwise to their email address if they have one, otherwise unlinked.
+
+  Parameters:
+    person: an entry from site.data.people
+    rel:    optional rel attribute for the link (e.g. "author")
+{%- endcomment -%}
+{%- assign pl_person = include.person -%}
+{%- if include.rel -%}{%- capture pl_rel %} rel="{{ include.rel }}"{% endcapture -%}{%- else -%}{%- assign pl_rel = "" -%}{%- endif -%}
+{%- if pl_person.website -%}
+<a href="{{ pl_person.website }}" target="_blank"{{ pl_rel }}>{{ pl_person.name }}</a>
+{%- elsif pl_person.email -%}
+<a href="mailto:{{ pl_person.email }}"{{ pl_rel }}>{{ pl_person.name }}</a>
+{%- else -%}
+{{ pl_person.name }}
+{%- endif -%}

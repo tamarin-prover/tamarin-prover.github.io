@@ -15,7 +15,7 @@ layout: core
             {%- endif -%}
         </time> &nbsp//
         {% assign author = site.data.people[page.author] %}
-        <a rel="author" href="{{ author.website }}" title="{{ author.name }}" target="{{ author.name }}">{{ author.name }}</a>
+        {% include person-link.html person=author rel="author" %}
     </div>
 
     {{ content }}

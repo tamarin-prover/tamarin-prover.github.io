@@ -15,30 +15,12 @@ category: about
 
   <p>
     {% assign core = site.data.people | where:"currentcore","true" %}
-    {% for person in core %}
-      {%- if person['website'] -%}
-        <a href="{{ person['website'] }}" target="_blank">{{ person['name'] }}</a>
-      {%- elsif person['email'] -%}
-        <a href="mailto:{{ person['email'] }}">{{ person['name'] }}</a>
-      {%- else -%}
-        {{ person['name'] }}
-      {%- endif -%}
-      {% if forloop.last != true %}, {% else %}.{% endif %}
-    {% endfor %}
+    {% include people.html people=core %}
   </p>
   <h3>Current maintainers</h3>
   <p>
     {% assign maintainers = site.data.people | where:"maintainer","true" %}
-    {% for person in maintainers %}
-      {%- if person['website'] -%}
-        <a href="{{ person['website'] }}" target="_blank">{{ person['name'] }}</a>
-      {%- elsif person['email'] -%}
-        <a href="mailto:{{ person['email'] }}">{{ person['name'] }}</a>
-      {%- else -%}
-        {{ person['name'] }}
-      {%- endif -%}
-      {% if forloop.last != true %}, {% else %}.{% endif %}
-    {% endfor %}
+    {% include people.html people=maintainers %}
   </p>
 
   <h3>Collaboration</h3>

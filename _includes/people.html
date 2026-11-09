@@ -1,8 +1,23 @@
-{% assign splitpeople = {{ include.people }} | split: " " %}
-Dog
-{{ splitpeople }}
-Cat
-{% for personid in splitpeople %}
-{%- assign person = site.data.people[personid] -%}
-<a href="{{ person.website }}">{{ person.name }}</a>{% if forloop.last != true %}, {% else %}.{% endif %}
-{% endfor %}
+{%- comment -%}
+  Renders a comma-separated list of people, ending with a period.
+  Each name is rendered via person-link.html.
+
+  Parameters (give exactly one):
+    people: an array of entries from site.data.people
+    ids:    a space-separated string of keys into site.data.people,
+            e.g. ids="david cas jannik ralf"
+{%- endcomment -%}
+{%- if include.ids -%}
+  {%- assign pp_items = include.ids | split: " " -%}
+{%- else -%}
+  {%- assign pp_items = include.people -%}
+{%- endif -%}
+{%- for pp_item in pp_items -%}
+  {%- if include.ids -%}
+    {%- assign pp_person = site.data.people[pp_item] -%}
+  {%- else -%}
+    {%- assign pp_person = pp_item -%}
+  {%- endif -%}
+  {%- include person-link.html person=pp_person -%}
+  {%- unless forloop.last %}, {% else %}.{% endunless -%}
+{%- endfor -%}
