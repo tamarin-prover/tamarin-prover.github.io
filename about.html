@@ -18,6 +18,8 @@ category: about
     {% for person in core %}
       {%- if person['website'] -%}
         <a href="{{ person['website'] }}" target="_blank">{{ person['name'] }}</a>
+      {%- elsif person['email'] -%}
+        <a href="mailto:{{ person['email'] }}">{{ person['name'] }}</a>
       {%- else -%}
         {{ person['name'] }}
       {%- endif -%}
@@ -30,6 +32,8 @@ category: about
     {% for person in maintainers %}
       {%- if person['website'] -%}
         <a href="{{ person['website'] }}" target="_blank">{{ person['name'] }}</a>
+      {%- elsif person['email'] -%}
+        <a href="mailto:{{ person['email'] }}">{{ person['name'] }}</a>
       {%- else -%}
         {{ person['name'] }}
       {%- endif -%}
