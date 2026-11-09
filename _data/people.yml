@@ -34,3 +34,7 @@ benedikt:
 lmandrelli:
   name: Luca Mandrelli
   website: https://github.com/lmandrelli
+kevin:
+  name: Kevin Milner
+  email-dontshow: kamilner@kamilner.ca
+  maintainer: true
